@@ -1,11 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 
 type Mode = "ai" | "clasico";
 
-const problems = [
+const aiProblems = [
   {
     icon: "trending_down",
     title: "Incertidumbre de ganancias",
@@ -28,7 +28,7 @@ const problems = [
   },
 ];
 
-const solutionFeatures = [
+const aiSolutionFeatures = [
   {
     icon: "print",
     title: "Órdenes rápidas e impresión",
@@ -69,7 +69,7 @@ const aiFeatures = [
   },
 ];
 
-const steps = [
+const aiSteps = [
   {
     number: "1",
     title: "Registra",
@@ -116,6 +116,78 @@ const testimonials = [
   },
 ];
 
+const classicProblems = [
+  {
+    icon: "payments",
+    title: "Falta de conocimiento de márgenes",
+    text: "No saber cuánto ganas realmente en cada evento o turno. Las mermas y costos ocultos devoran tu utilidad.",
+  },
+  {
+    icon: "terminal",
+    title: "Dependencia total del POS",
+    text: "Estar amarrado a sistemas cerrados sin análisis profundo. El POS solo registra, no te ayuda a crecer.",
+  },
+  {
+    icon: "query_stats",
+    title: "Decisiones por instinto",
+    text: "Cambiar precios o menús sin datos que lo respalden. Arriesgas tu capital en cada movimiento estratégico.",
+  },
+];
+
+const classicFeatures = [
+  {
+    icon: "event_available",
+    title: "Ventas por evento",
+    text: "Desglosa tus ingresos por food truck, feria o local físico. Compara el rendimiento de diferentes locaciones al instante.",
+  },
+  {
+    icon: "credit_card",
+    title: "Integración Transbank",
+    text: "Sincronización automática de tus pagos con tarjeta. Olvida la conciliación manual y los errores humanos al cierre de caja.",
+  },
+];
+
+const classicBenefits = [
+  {
+    icon: "analytics",
+    title: "Más control",
+    text: "Visibilidad total de cada peso que entra y sale de tu operación.",
+  },
+  {
+    icon: "sentiment_satisfied",
+    title: "Menos estrés",
+    text: "Automatiza reportes y deja de sufrir con excels complicados cada noche.",
+  },
+  {
+    icon: "rocket_launch",
+    title: "Crecimiento real",
+    text: "Escala tu negocio abriendo nuevas sucursales con procesos validados.",
+  },
+];
+
+const classicSteps = [
+  { number: "1", title: "Conecta", text: "Sincroniza tus medios de pago y carga tu menú base en minutos." },
+  { number: "2", title: "Visualiza", text: "Observa cómo fluyen los datos en tiempo real desde cualquier dispositivo." },
+  { number: "3", title: "Mejora", text: "Ajusta tus márgenes y optimiza tu rentabilidad con insights precisos." },
+];
+
+const classicRoadmap = [
+  {
+    icon: "receipt_long",
+    title: "Integración SII",
+    text: "Emisión automática de boletas electrónicas sincronizadas con tus ventas.",
+    tag: "Q3 2024",
+    highlight: true,
+  },
+  {
+    icon: "inventory_2",
+    title: "Inventario automatizado",
+    text: "Control de stock basado en recetas y ventas proyectadas.",
+    tag: "Q4 2024",
+    highlight: false,
+  },
+];
+
 function ModeToggle({
   mode,
   onChange,
@@ -147,416 +219,649 @@ function ModeToggle({
   );
 }
 
+function AiLanding() {
+  const heroBadge = {
+    text: "Nuevo: Módulo Fast Trucks AI",
+    tone: "text-primary bg-primary/10",
+  };
+
+  const stepFour = {
+    title: "Decide con IA",
+    text: "Usa los datos y la IA para planificar tu próxima inversión.",
+  };
+
+  return (
+    <>
+      <section className="relative pt-16 pb-24 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+          <div className="flex flex-col gap-8">
+            <div
+              className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider w-fit ${heroBadge.tone}`}
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+              </span>
+              {heroBadge.text}
+            </div>
+            <h1 className="text-5xl md:text-6xl font-black leading-[1.1] tracking-tight text-slate-900">
+              Controla tus ventas en ferias y eventos y toma{" "}
+              <span className="text-primary">decisiones inteligentes</span> con datos reales.
+            </h1>
+            <p className="text-lg text-slate-600 leading-relaxed max-w-xl">
+              El sistema especializado para negocios móviles que transforma el caos de los eventos en rentabilidad medible.
+              Deja de adivinar y comienza a optimizar.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <button className="px-8 py-4 text-base font-bold bg-primary text-white rounded-xl shadow-xl shadow-primary/30 hover:translate-y-[-2px] transition-all">
+                Solicitar demo gratuita
+              </button>
+              <button className="px-8 py-4 text-base font-bold bg-white border border-slate-200 text-slate-900 rounded-xl shadow-sm hover:bg-slate-50 transition-all flex items-center gap-2">
+                <span className="material-symbols-outlined">play_circle</span>
+                Ver cómo funciona
+              </button>
+            </div>
+          </div>
+          <div className="relative group">
+            <div className="absolute -inset-4 bg-primary/20 rounded-3xl blur-3xl group-hover:bg-primary/30 transition-all duration-500"></div>
+            <div className="relative bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden">
+              <Image
+                alt="Dashboard de ventas"
+                className="w-full h-auto"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKl4ycpbNal8oh0lKome-8EKOuXlehoFfMbgzleDpHUDegSxs1O_OANvi15HQx8RZxWphfTIOCBB11tZAFR3RsTof28N8P6XuB0Ynxl4AwGwqnnVt_NrHVyKoaRd7gWdsQQsYkevmdmjjaCzpurwme8enSvJfxiSz6N08Z4achpOx1wvDx7sMFWN3ZicYWRm118czdcQAefVUplkWWpNVrz9l5cuWInS_us0M_j2R_LK6FBY9AGOwrJwAI1hu22Ue2WanzxmYNMCpy"
+                width={1600}
+                height={900}
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                priority
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 bg-white border-y border-slate-100" id="problemas">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-slate-900 mb-4">Supera los desafíos de la venta en terreno</h2>
+            <p className="text-slate-600 max-w-2xl mx-auto">
+              Identifica y resuelve las fugas de dinero que están afectando tu crecimiento actual.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {aiProblems.map((item) => (
+              <div
+                key={item.title}
+                className="p-8 rounded-2xl bg-background-light border border-slate-100 hover:border-primary/30 transition-colors"
+              >
+                <span className="material-symbols-outlined text-primary text-4xl mb-4">{item.icon}</span>
+                <h3 className="font-bold text-lg mb-2">{item.title}</h3>
+                <p className="text-sm text-slate-600">{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24" id="solucion">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="order-2 lg:order-1 relative">
+              <div className="bg-primary/5 rounded-3xl p-8 border border-primary/10">
+                <Image
+                  alt="Punto de venta móvil"
+                  className="rounded-xl shadow-lg border border-slate-200"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCT31ayx6u935e1Yz6DjUjq7vBI2L1-MC-UEP4zsbcEZggo8yLlgPE8PCVEjTEbWOHWRVurNiwTI3h3Y5d72knCUIpwEw6LlYgeL8WpEcn93XcFtanQb_c4NBcrklJIm7gCEJwXMIc3ixYY8cfcor5kXB9Djz4Pwdy_QvPiHB_cMmcAfOgPEIgZE-p74dnWOqYa6dNLdC_kouz2shqgWc2U1DneabL0fjAQRxfL9x6YBGWdriONGM6i4Yj0xgkBaG5uzmx9wTDpLhK6"
+                  width={1400}
+                  height={900}
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                />
+              </div>
+            </div>
+            <div className="order-1 lg:order-2 flex flex-col gap-10">
+              <div>
+                <h2 className="text-3xl font-bold text-slate-900 mb-4">Una solución diseñada para la velocidad del terreno</h2>
+                <p className="text-slate-600">Gestiona múltiples puntos de venta de forma centralizada y en tiempo real.</p>
+              </div>
+              <div className="space-y-6">
+                {aiSolutionFeatures.map((item) => (
+                  <div key={item.title} className="flex gap-4">
+                    <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
+                      <span className="material-symbols-outlined">{item.icon}</span>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-lg">{item.title}</h4>
+                      <p className="text-sm text-slate-600">{item.text}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 bg-navy-deep text-white overflow-hidden relative" id="ai">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2"></div>
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="flex flex-col items-center text-center mb-16">
+            <div className="flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full border border-primary/50 bg-primary/10 backdrop-blur-sm">
+              <span className="material-symbols-outlined text-primary text-sm">smart_toy</span>
+              <span className="text-xs font-bold tracking-widest uppercase">Fast Trucks AI</span>
+            </div>
+            <h2 className="text-4xl font-bold mb-6">Inteligencia Predictiva para tu Negocio</h2>
+            <p className="text-slate-400 max-w-2xl">
+              Nuestra IA analiza miles de puntos de datos para decirte exactamente dónde y cuándo vender para maximizar tus utilidades.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {aiFeatures.map((item) => (
+              <div
+                key={item.title}
+                className="p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 transition-all group"
+              >
+                <span className="material-symbols-outlined text-primary text-3xl mb-4 group-hover:scale-110 transition-transform">
+                  {item.icon}
+                </span>
+                <h3 className="font-bold text-xl mb-3">{item.title}</h3>
+                <p className="text-slate-400 text-sm">{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 bg-white" id="proceso">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-20">
+            <h2 className="text-3xl font-bold text-slate-900">Implementación en 4 pasos</h2>
+          </div>
+          <div className="grid md:grid-cols-4 gap-8 relative">
+            <div className="hidden lg:block absolute top-12 left-1/4 right-1/4 h-[2px] bg-primary/10 -z-0"></div>
+            {aiSteps.map((step) => (
+              <div key={step.number} className="relative z-10 text-center flex flex-col items-center">
+                <div className="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center font-bold text-2xl mb-6 shadow-lg shadow-primary/30">
+                  {step.number}
+                </div>
+                <h4 className="font-bold text-lg mb-2 text-slate-900">{step.title}</h4>
+                <p className="text-sm text-slate-500">{step.text}</p>
+              </div>
+            ))}
+            <div className="relative z-10 text-center flex flex-col items-center">
+              <div className="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center font-bold text-2xl mb-6 shadow-lg shadow-primary/30">
+                4
+              </div>
+              <h4 className="font-bold text-lg mb-2 text-slate-900">{stepFour.title}</h4>
+              <p className="text-sm text-slate-500">{stepFour.text}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 bg-background-light">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-3xl font-bold text-center mb-16 text-slate-900">Lo que dicen los dueños de negocios</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {testimonials.map((item) => {
+              const quote = item.quoteAI ?? item.quote;
+              return (
+                <div
+                  key={item.name}
+                  className="p-8 rounded-2xl bg-white shadow-sm border border-slate-100 flex flex-col gap-6"
+                >
+                  <div className="flex text-primary">
+                    {Array.from({ length: 5 }).map((_, index) => (
+                      <span key={index} className="material-symbols-outlined font-fill">
+                        star
+                      </span>
+                    ))}
+                  </div>
+                  <p className="text-slate-600 italic">{quote}</p>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-slate-200 overflow-hidden">
+                      <Image
+                        alt={item.name}
+                        className="w-full h-full rounded-full object-cover"
+                        src={item.avatar}
+                        width={96}
+                        height={96}
+                      />
+                    </div>
+                    <div>
+                      <h5 className="font-bold text-sm">{item.name}</h5>
+                      <span className="text-xs text-slate-400">{item.role}</span>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 bg-white">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="bg-primary rounded-[2.5rem] p-12 text-center text-white relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-black/20 to-transparent"></div>
+            <div className="relative z-10 flex flex-col items-center gap-8">
+              <h2 className="text-4xl md:text-5xl font-black leading-tight">Descubre qué eventos realmente te generan utilidades</h2>
+              <p className="text-lg opacity-90 max-w-2xl">
+                Únete a cientos de emprendedores que ya están profesionalizando su operación con Fast Trucks.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
+                <button className="px-10 py-5 bg-navy-deep text-white font-bold rounded-2xl shadow-2xl hover:bg-navy-deep/90 transition-all flex items-center justify-center gap-3">
+                  <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-1.557-.594-2.618-1.542-1.06-.948-1.597-1.884-1.741-2.289-.144-.405-.015-.624.114-.753.129-.129.288-.315.405-.441.117-.126.155-.216.234-.351.079-.135.039-.252-.02-.378-.06-.126-.54-1.297-.739-1.774-.194-.465-.394-.402-.54-.41-.139-.007-.3-.008-.459-.008-.16 0-.419.06-.639.3-.219.24-.84.822-.84 2.008s.859 2.333.979 2.494c.121.161 1.69 2.579 4.093 3.619.571.247 1.017.395 1.365.505.574.182 1.097.157 1.511.095.462-.069 1.423-.582 1.623-1.144.2-.563.2-1.044.14-1.144-.06-.099-.219-.155-.459-.275zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.66 1.434 5.174l-1.434 5.234 5.35-1.405c1.472.846 3.18 1.332 5.003 1.332 5.523 0 10-4.477 10-10S17.523 2 12 2z"></path>
+                  </svg>
+                  Hablar por WhatsApp
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+function ClassicLanding() {
+  return (
+    <>
+      <section className="relative px-6 py-16 md:px-20 md:py-24">
+        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-2 lg:items-center">
+          <div className="flex flex-col gap-8">
+            <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"></span>
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-primary"></span>
+              </span>
+              Beta abierta para fundadores
+            </div>
+            <h1 className="text-5xl font-black leading-tight text-navy-deep md:text-6xl lg:text-7xl">
+              Toma el control <span className="text-primary">real</span> de tus ventas hoy
+            </h1>
+            <p className="text-lg leading-relaxed text-slate-600 md:text-xl">
+              Deja de adivinar tus ganancias. Toma decisiones basadas en datos reales y optimiza la rentabilidad de tu negocio gastronómico con
+              Fast Trucks.
+            </p>
+            <div className="flex flex-col gap-4 sm:flex-row">
+              <button className="inline-flex items-center justify-center rounded-lg bg-primary px-8 py-4 text-base font-bold text-white shadow-xl shadow-primary/30 hover:scale-[1.02] transition-transform">
+                Solicitar acceso anticipado
+              </button>
+              <button className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-slate-200 bg-transparent px-8 py-4 text-base font-bold text-navy-deep hover:bg-slate-50 transition-colors">
+                <span className="material-symbols-outlined">play_circle</span>
+                Ver demo
+              </button>
+            </div>
+          </div>
+          <div className="relative">
+            <div className="aspect-video w-full rounded-2xl bg-slate-900 p-2 shadow-2xl ring-1 ring-slate-200">
+              <div
+                className="h-full w-full overflow-hidden rounded-xl bg-slate-800"
+                style={{
+                  backgroundImage:
+                    "url('https://lh3.googleusercontent.com/aida-public/AB6AXuC_QA9OhC3BEQKUmyoAK8IGXX_8ipn1itOL7G-hF0pqDTW7j3DWE0rkVZxfOYunQJQR1BabL20vhHTrAQTmLZsUmxT0x_rzkS_htfM6h1Mb3VwXNRqO6YilwmSYnlIkOpgRKA-1LK0PSlqj8ota7sJaTtuTPHwmVtBYXJZClTAfdfbe0j_N4Pi8z5DUs4kibIRPFF3SyhIcMLheT0j5eVsiKPzOYgURNDEoW1ZiW8ygcoW9sAg_vD51wnNoaqvL3VnqgFwCPBe_Dpkl')",
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              ></div>
+            </div>
+            <div className="absolute -bottom-6 -left-6 hidden rounded-xl bg-white p-6 shadow-2xl md:block">
+              <div className="flex items-center gap-4">
+                <div className="rounded-full bg-green-100 p-3 text-green-600">
+                  <span className="material-symbols-outlined">trending_up</span>
+                </div>
+                <div>
+                  <p className="text-xs font-bold uppercase text-slate-400">Margen promedio</p>
+                  <p className="text-2xl font-black text-navy-deep">+24% este mes</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-slate-50 px-6 py-20 md:px-20" id="problemas">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-16 text-center">
+            <h2 className="mb-4 text-3xl font-black text-navy-deep md:text-4xl">¿Cansado de no conocer tus márgenes reales?</h2>
+            <p className="mx-auto max-w-2xl text-slate-600">
+              Muchos negocios gastronómicos operan a ciegas. Identifica si estás cometiendo estos errores comunes.
+            </p>
+          </div>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {classicProblems.map((item) => (
+              <div
+                key={item.title}
+                className="group rounded-2xl bg-white p-8 shadow-sm transition-all hover:shadow-xl"
+              >
+                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-red-50 text-red-500 group-hover:bg-red-500 group-hover:text-white transition-colors">
+                  <span className="material-symbols-outlined text-3xl">{item.icon}</span>
+                </div>
+                <h3 className="mb-3 text-xl font-bold text-navy-deep">{item.title}</h3>
+                <p className="text-slate-600">{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6 py-20 md:px-20" id="soluciones">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-16">
+            <h2 className="mb-4 text-3xl font-black text-navy-deep md:text-5xl">Visualiza tu éxito en tiempo real</h2>
+            <p className="max-w-xl text-slate-600">
+              Un panel de control diseñado para la velocidad de la industria gastronómica. Centraliza tus operaciones en un solo lugar.
+            </p>
+          </div>
+          <div className="grid gap-12 lg:grid-cols-2">
+            <div className="flex flex-col justify-center gap-8">
+              {classicFeatures.map((item) => (
+                <div key={item.title} className="flex gap-4">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+                    <span className="material-symbols-outlined">{item.icon}</span>
+                  </div>
+                  <div>
+                    <h4 className="mb-2 text-xl font-bold text-navy-deep">{item.title}</h4>
+                    <p className="text-slate-600">{item.text}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl">
+              <div className="border-b border-slate-100 bg-slate-50 px-6 py-3">
+                <div className="flex gap-2">
+                  <div className="h-3 w-3 rounded-full bg-red-400"></div>
+                  <div className="h-3 w-3 rounded-full bg-yellow-400"></div>
+                  <div className="h-3 w-3 rounded-full bg-green-400"></div>
+                </div>
+              </div>
+              <div className="p-6">
+                <div className="grid grid-cols-2 gap-4">
+                  <div
+                    className="h-32 rounded-lg bg-slate-100"
+                    style={{
+                      backgroundImage:
+                        "url('https://lh3.googleusercontent.com/aida-public/AB6AXuCbuOUqgejx7uJfS6LHP-R4sNs6H6WLfwzNxRT3SsxMFR1KtHHFGcy7lpGtqjqhuI4CD8Id_7Xlbl2UCFh1tZmbg0RRSkbE_DzSGknrPKRG9QrgVafBbX1UnmAd40u78HD_hytGyA5Sc-7F95qSusYmqNrYDdlgprvIpOPiwB6270t4AneXoUUseZr0zTw2GoJK5Fjq2lzHOG7cDeoYz294pAoQDV_Gtb0glYzuOUvpFFX_yqK6Q3rpFvm6HZy6QpZteAlopcvRDC1O')",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                    }}
+                  ></div>
+                  <div
+                    className="h-32 rounded-lg bg-slate-100"
+                    style={{
+                      backgroundImage:
+                        "url('https://lh3.googleusercontent.com/aida-public/AB6AXuA7aqTnghndAzuOI5nfZRkBvs2jK4rFJ0v3_LRQ82lAtUuMJWuzmi72_yY3RNDffgpHIeXJYjIdXb5RSms1AdBxOFz1rPBtGnQmxvXEnyClol9YaKzIHpX31ZdVYj8RcSbh4UNyzdP8XrXx8sSSSziQ8R5FM_tppozkWjP1W01ZmQ84SKkPkKRAwXHpSSnFg_3ggy4yk0R6uJr_SGG2cj_E6Y4JwjeYFsi3tXMaI_7zfuPfte6-kqlScssBN5mlgreqxiQVE9Rmmd8x')",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                    }}
+                  ></div>
+                  <div
+                    className="col-span-2 h-48 rounded-lg bg-slate-100"
+                    style={{
+                      backgroundImage:
+                        "url('https://lh3.googleusercontent.com/aida-public/AB6AXuBPXKaRjYtDXPQEPqAcMp1N6cCJdjweN3jmFCtIp2j1zgeUwfrtsvb1y9hpY85rjipkQogatIzdYHwIu-gKYbgSbqHwfYT42S08eedd4Pq9g2nugQa66mM_39ltYyud9Jop6kHC7yaGuokh2YxooNvBKpLGWy-Y-mpZ70yKE9N4RHOxUxSbfkVaBOLhBFQU77wtZlhK7-UK7swKDluDSU5QT-DdBmYc4xhjFZsCnqtuYXOTcZaTSirOQMdFiaQZBiUcmeNGNAVo0zQ4')",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                    }}
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-navy-deep px-6 py-20 text-white md:px-20" id="beneficios">
+        <div className="mx-auto max-w-7xl text-center">
+          <h2 className="mb-16 text-3xl font-black md:text-4xl">Por qué elegir Fast Trucks</h2>
+          <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
+            {classicBenefits.map((item) => (
+              <div key={item.title} className="flex flex-col items-center gap-4">
+                <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-white/10">
+                  <span className="material-symbols-outlined text-4xl text-primary">{item.icon}</span>
+                </div>
+                <h3 className="text-xl font-bold">{item.title}</h3>
+                <p className="text-slate-300">{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6 py-20 md:px-20">
+        <div className="mx-auto max-w-7xl">
+          <h2 className="mb-16 text-center text-3xl font-black text-navy-deep md:text-4xl">Implementación en 3 pasos</h2>
+          <div className="relative grid gap-12 md:grid-cols-3">
+            <div className="absolute left-1/4 top-10 hidden h-0.5 w-1/2 bg-slate-100 md:block"></div>
+            {classicSteps.map((step) => (
+              <div key={step.number} className="relative flex flex-col items-center text-center">
+                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-white text-2xl font-black text-primary shadow-xl ring-4 ring-primary/5">
+                  {step.number}
+                </div>
+                <h3 className="mb-3 text-xl font-bold text-navy-deep">{step.title}</h3>
+                <p className="text-slate-600">{step.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-slate-50 px-6 py-20 md:px-20" id="roadmap">
+        <div className="mx-auto max-w-4xl">
+          <div className="mb-12 text-center">
+            <span className="text-sm font-bold uppercase tracking-widest text-primary">Próximamente</span>
+            <h2 className="mt-4 text-3xl font-black text-navy-deep md:text-4xl">Nuestra hoja de ruta</h2>
+          </div>
+          <div className="space-y-6">
+            {classicRoadmap.map((item) => (
+              <div
+                key={item.title}
+                className={`flex items-center gap-6 rounded-2xl bg-white p-6 shadow-sm border-l-4 ${
+                  item.highlight ? "border-primary" : "border-slate-200"
+                }`}
+              >
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                  <span className="material-symbols-outlined">{item.icon}</span>
+                </div>
+                <div>
+                  <h4 className="font-bold text-navy-deep">{item.title}</h4>
+                  <p className="text-sm text-slate-600">{item.text}</p>
+                </div>
+                <div
+                  className={`ml-auto hidden rounded-full px-3 py-1 text-[10px] font-bold uppercase md:block ${
+                    item.highlight ? "bg-orange-100 text-primary" : "bg-slate-100 text-slate-400"
+                  }`}
+                >
+                  {item.tag}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6 py-24 md:px-20">
+        <div className="mx-auto max-w-5xl overflow-hidden rounded-[2rem] bg-navy-deep p-8 md:p-16 relative">
+          <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary/20 blur-3xl"></div>
+          <div className="absolute -left-20 -bottom-20 h-64 w-64 rounded-full bg-primary/10 blur-3xl"></div>
+          <div className="relative grid gap-12 lg:grid-cols-2">
+            <div className="flex flex-col justify-center gap-6 text-white">
+              <h2 className="text-4xl font-black leading-tight md:text-5xl">Cupos limitados para fundadores</h2>
+              <p className="text-lg text-slate-300">
+                Únete a los primeros 50 negocios y obtén un descuento vitalicio del 50% y soporte prioritario.
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="flex -space-x-2">
+                  {[
+                    "https://lh3.googleusercontent.com/aida-public/AB6AXuCEhgbbUlxheQgnRdLJlYbFYWVZblJgOCJUFOXLgiPQo6iPN3LYekE4lQQ9B1BHZZciYGJ8qlDKsRdlxOd_5OXdCv8HdjOWVkB9SXSBzWmQ708knqrV-fyyDXrnHUIhn-0a_d4Rr-ksCXiRBz0Z55yVnEh50UWzvJ5fL3a4qvpJEu0xu7HU9z2h4ehxelyltmCfT1ePSAAoWKefT_5-ee4rh7jNQbttImS7C_sOdIUPrSTo3IVGLFn3us-_I1JhlbpV3JAUgtLQx9vf",
+                    "https://lh3.googleusercontent.com/aida-public/AB6AXuDzm-WNdbQO_6OUvHFnXa999IGkfzsjdjXXMuDY5JXrHtf4cNqceF2D_bcnlps5yPi7pR9P4HLGgxGLUSG5Rg8DU03mqelLqCsz4YFXhsAFWgVUk2ZTG7ht2p5FQtS1Q6XDcKOuispCmriSdTJqBGFYI77T0upzWTaEsL2Z8-fF49yO6D73ZdNR5XL79qsNLgXKObtrEuegrgXAbg8PUTfrA_WFYys5fj7c-60dSVAb0HGhoPBEeKkMi0BRWAtaEnTRW6njX7aRZU31",
+                    "https://lh3.googleusercontent.com/aida-public/AB6AXuDVUyMisnkFE71Too2OYbeZ5AFU-vS6-z0qVrqeYk1bNlFyABU0X04-Y-M88uhKKiSCXXN9eMv3xkafJuyhQ_RMtGeya6MbiH1IGLHp034ogG1PUhpCytUpkn6-DHYJ0tBfo2Szpc9KofLP7qWmG-yvJki-8glIVyJVKISBqfab_7xbHD-Mvavc-p8IcVVRx7fbbvlWyPjsJacH4uTpEURiIiD_W4xUEazj9dMHSIakaykafpXJzP2yc-IdRZZ65d1gHi3j39MeoKrz",
+                  ].map((avatar, index) => (
+                    <div
+                      key={avatar}
+                      className="h-10 w-10 rounded-full border-2 border-navy-deep bg-slate-400"
+                      style={{
+                        backgroundImage: `url('${avatar}')`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                        zIndex: 10 - index,
+                      }}
+                    ></div>
+                  ))}
+                </div>
+                <span className="text-sm font-medium text-slate-400">42 dueños ya se unieron</span>
+              </div>
+            </div>
+            <div className="rounded-2xl bg-white p-8">
+              <form className="flex flex-col gap-4">
+                <div>
+                  <label className="mb-2 block text-sm font-bold text-navy-deep">Nombre completo</label>
+                  <input
+                    className="w-full rounded-lg border-slate-200 bg-slate-50 p-3 text-slate-900 focus:border-primary focus:ring-primary"
+                    placeholder="Ej: Juan Pérez"
+                    type="text"
+                  />
+                </div>
+                <div>
+                  <label className="mb-2 block text-sm font-bold text-navy-deep">Email de empresa</label>
+                  <input
+                    className="w-full rounded-lg border-slate-200 bg-slate-50 p-3 text-slate-900 focus:border-primary focus:ring-primary"
+                    placeholder="juan@tu-foodtruck.cl"
+                    type="email"
+                  />
+                </div>
+                <div>
+                  <label className="mb-2 block text-sm font-bold text-navy-deep">Tipo de negocio</label>
+                  <select className="w-full rounded-lg border-slate-200 bg-slate-50 p-3 text-slate-900 focus:border-primary focus:ring-primary">
+                    <option>Food Truck</option>
+                    <option>Local físico</option>
+                    <option>Eventos / Catering</option>
+                    <option>Comida rápida</option>
+                  </select>
+                </div>
+                <button className="mt-4 w-full rounded-lg bg-primary py-4 text-lg font-black text-white shadow-xl shadow-primary/20 hover:bg-primary/90 transition-all">
+                  Registrarme ahora
+                </button>
+                <p className="text-center text-xs text-slate-400">Al registrarte, aceptas nuestros términos de servicio.</p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer className="border-t border-slate-200 bg-white px-6 py-12 md:px-20">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-12 md:grid-cols-4">
+            <div className="md:col-span-2">
+              <div className="mb-6 flex items-center gap-2">
+                <div className="flex h-8 w-8 items-center justify-center rounded bg-primary text-white">
+                  <span className="material-symbols-outlined text-sm">local_shipping</span>
+                </div>
+                <span className="text-lg font-black tracking-tight text-navy-deep">Fast Trucks</span>
+              </div>
+              <p className="max-w-xs text-sm text-slate-500">
+                Optimizando la rentabilidad de la gastronomía móvil en Chile con tecnología de vanguardia.
+              </p>
+            </div>
+            <div>
+              <h5 className="mb-4 font-bold text-navy-deep">Producto</h5>
+              <ul className="space-y-2 text-sm text-slate-500">
+                <li>
+                  <a className="hover:text-primary" href="#">
+                    Características
+                  </a>
+                </li>
+                <li>
+                  <a className="hover:text-primary" href="#">
+                    Precios
+                  </a>
+                </li>
+                <li>
+                  <a className="hover:text-primary" href="#">
+                    Integraciones
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h5 className="mb-4 font-bold text-navy-deep">Compañía</h5>
+              <ul className="space-y-2 text-sm text-slate-500">
+                <li>
+                  <a className="hover:text-primary" href="#">
+                    Sobre nosotros
+                  </a>
+                </li>
+                <li>
+                  <a className="hover:text-primary" href="#">
+                    Soporte
+                  </a>
+                </li>
+                <li>
+                  <a className="hover:text-primary" href="#">
+                    Privacidad
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="mt-12 border-t border-slate-100 pt-8 text-center text-xs text-slate-400">
+            © 2024 Fast Trucks SaaS. Hecho para Chile. Todos los derechos reservados.
+          </div>
+        </div>
+      </footer>
+    </>
+  );
+}
+
 export default function Home() {
   const [mode, setMode] = useState<Mode>("ai");
   const aiEnabled = mode === "ai";
 
-  const heroBadge = useMemo(
-    () =>
-      aiEnabled
-        ? { text: "Nuevo: Módulo Fast Trucks AI", tone: "text-primary bg-primary/10" }
-        : { text: "Modo clásico sin IA (IA pronto)", tone: "text-slate-700 bg-white/80" },
-    [aiEnabled]
-  );
-
-  const stepFour = useMemo(
-    () =>
-      aiEnabled
-        ? {
-            title: "Decide con IA",
-            text: "Usa los datos y la IA para planificar tu próxima inversión.",
-          }
-        : {
-            title: "Decide",
-            text: "Usa los datos para planificar tu próxima inversión. El módulo IA se activará en cuanto tengamos datos suficientes.",
-          },
-    [aiEnabled]
-  );
+  const navLinks = aiEnabled
+    ? [
+        { href: "#problemas", label: "Problemas" },
+        { href: "#solucion", label: "Solución" },
+        { href: "#ai", label: "Fast Trucks AI" },
+        { href: "#proceso", label: "Cómo funciona" },
+      ]
+    : [
+        { href: "#problemas", label: "Problemas" },
+        { href: "#soluciones", label: "Soluciones" },
+        { href: "#beneficios", label: "Beneficios" },
+        { href: "#roadmap", label: "Próximamente" },
+      ];
 
   return (
     <div className="min-h-screen bg-background-light text-slate-900 font-display">
-      <header className="sticky top-0 z-50 w-full bg-background-light/80 backdrop-blur-md border-b border-primary/10">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <header className="sticky top-0 z-50 w-full bg-background-light/80 backdrop-blur-md border-b border-primary/10 px-6 md:px-10">
+        <div className="max-w-7xl mx-auto h-20 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="bg-primary p-1.5 rounded-lg text-white">
-              <span className="material-symbols-outlined text-2xl block">
-                local_shipping
-              </span>
+              <span className="material-symbols-outlined text-2xl block">local_shipping</span>
             </div>
-            <span className="text-xl font-bold tracking-tight text-slate-900">
-              Fast Trucks
-            </span>
+            <span className="text-xl font-bold tracking-tight text-slate-900">Fast Trucks</span>
           </div>
-          <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
-            <a className="hover:text-primary transition-colors" href="#problemas">
-              Problemas
-            </a>
-            <a className="hover:text-primary transition-colors" href="#solucion">
-              Solución
-            </a>
-            {aiEnabled && (
-              <a className="hover:text-primary transition-colors" href="#ai">
-                Fast Trucks AI
+          <nav className="hidden md:flex items-center gap-8 text-sm font-semibold">
+            {navLinks.map((item) => (
+              <a key={item.href} className="hover:text-primary transition-colors" href={item.href}>
+                {item.label}
               </a>
-            )}
-            <a className="hover:text-primary transition-colors" href="#proceso">
-              Cómo funciona
-            </a>
+            ))}
           </nav>
           <div className="flex items-center gap-3">
             <ModeToggle mode={mode} onChange={setMode} />
-            <button className="hidden sm:block px-5 py-2.5 text-sm font-semibold border border-primary/20 rounded-lg hover:bg-primary/5 transition-colors">
+            <button className="hidden sm:block px-5 py-2.5 text-sm font-semibold text-navy-deep border border-primary/20 rounded-lg hover:bg-primary/5 transition-colors">
               Iniciar sesión
             </button>
             <button className="px-6 py-2.5 text-sm font-bold bg-primary text-white rounded-lg shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all">
-              Solicitar demo
+              {aiEnabled ? "Solicitar demo" : "Solicitar acceso"}
             </button>
           </div>
         </div>
       </header>
 
-      <main>
-        <section className="relative pt-16 pb-24 overflow-hidden">
-          <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
-            <div className="flex flex-col gap-8">
-              <div
-                className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider w-fit ${heroBadge.tone}`}
-              >
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-                </span>
-                {heroBadge.text}
-              </div>
-              <h1 className="text-5xl md:text-6xl font-black leading-[1.1] tracking-tight text-slate-900">
-                Controla tus ventas en ferias y eventos y toma{" "}
-                <span className="text-primary">decisiones inteligentes</span> con
-                datos reales.
-              </h1>
-              <p className="text-lg text-slate-600 leading-relaxed max-w-xl">
-                {aiEnabled
-                  ? "El sistema especializado para negocios móviles que transforma el caos de los eventos en rentabilidad medible. Deja de adivinar y comienza a optimizar."
-                  : "El sistema especializado para negocios móviles que transforma el caos de los eventos en rentabilidad medible. Modo clásico habilitado mientras terminamos de entrenar la IA."}
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <button className="px-8 py-4 text-base font-bold bg-primary text-white rounded-xl shadow-xl shadow-primary/30 hover:translate-y-[-2px] transition-all">
-                  Solicitar demo gratuita
-                </button>
-                <button className="px-8 py-4 text-base font-bold bg-white border border-slate-200 text-slate-900 rounded-xl shadow-sm hover:bg-slate-50 transition-all flex items-center gap-2">
-                  <span className="material-symbols-outlined">play_circle</span>
-                  Ver cómo funciona
-                </button>
-              </div>
-            </div>
-            <div className="relative group">
-              <div className="absolute -inset-4 bg-primary/20 rounded-3xl blur-3xl group-hover:bg-primary/30 transition-all duration-500"></div>
-              <div className="relative bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden">
-                <Image
-                  alt="Dashboard de ventas"
-                  className="w-full h-auto"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKl4ycpbNal8oh0lKome-8EKOuXlehoFfMbgzleDpHUDegSxs1O_OANvi15HQx8RZxWphfTIOCBB11tZAFR3RsTof28N8P6XuB0Ynxl4AwGwqnnVt_NrHVyKoaRd7gWdsQQsYkevmdmjjaCzpurwme8enSvJfxiSz6N08Z4achpOx1wvDx7sMFWN3ZicYWRm118czdcQAefVUplkWWpNVrz9l5cuWInS_us0M_j2R_LK6FBY9AGOwrJwAI1hu22Ue2WanzxmYNMCpy"
-                  width={1600}
-                  height={900}
-                  sizes="(min-width: 1024px) 50vw, 100vw"
-                  priority
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="py-24 bg-white border-y border-slate-100" id="problemas">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold text-slate-900 mb-4">
-                Supera los desafíos de la venta en terreno
-              </h2>
-              <p className="text-slate-600 max-w-2xl mx-auto">
-                Identifica y resuelve las fugas de dinero que están afectando tu
-                crecimiento actual.
-              </p>
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {problems.map((item) => (
-                <div
-                  key={item.title}
-                  className="p-8 rounded-2xl bg-background-light border border-slate-100 hover:border-primary/30 transition-colors"
-                >
-                  <span className="material-symbols-outlined text-primary text-4xl mb-4">
-                    {item.icon}
-                  </span>
-                  <h3 className="font-bold text-lg mb-2">{item.title}</h3>
-                  <p className="text-sm text-slate-600">{item.text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="py-24" id="solucion">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="order-2 lg:order-1 relative">
-                <div className="bg-primary/5 rounded-3xl p-8 border border-primary/10">
-                  <Image
-                    alt="Punto de venta móvil"
-                    className="rounded-xl shadow-lg border border-slate-200"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCT31ayx6u935e1Yz6DjUjq7vBI2L1-MC-UEP4zsbcEZggo8yLlgPE8PCVEjTEbWOHWRVurNiwTI3h3Y5d72knCUIpwEw6LlYgeL8WpEcn93XcFtanQb_c4NBcrklJIm7gCEJwXMIc3ixYY8cfcor5kXB9Djz4Pwdy_QvPiHB_cMmcAfOgPEIgZE-p74dnWOqYa6dNLdC_kouz2shqgWc2U1DneabL0fjAQRxfL9x6YBGWdriONGM6i4Yj0xgkBaG5uzmx9wTDpLhK6"
-                    width={1400}
-                    height={900}
-                    sizes="(min-width: 1024px) 50vw, 100vw"
-                  />
-                </div>
-              </div>
-              <div className="order-1 lg:order-2 flex flex-col gap-10">
-                <div>
-                  <h2 className="text-3xl font-bold text-slate-900 mb-4">
-                    Una solución diseñada para la velocidad del terreno
-                  </h2>
-                  <p className="text-slate-600">
-                    Gestiona múltiples puntos de venta de forma centralizada y en
-                    tiempo real.
-                  </p>
-                </div>
-                <div className="space-y-6">
-                  {solutionFeatures.map((item) => (
-                    <div key={item.title} className="flex gap-4">
-                      <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
-                        <span className="material-symbols-outlined">
-                          {item.icon}
-                        </span>
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-lg">{item.title}</h4>
-                        <p className="text-sm text-slate-600">{item.text}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {aiEnabled ? (
-          <section className="py-24 bg-navy-deep text-white overflow-hidden relative" id="ai">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-primary/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2"></div>
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2"></div>
-            <div className="max-w-7xl mx-auto px-6 relative z-10">
-              <div className="flex flex-col items-center text-center mb-16">
-                <div className="flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full border border-primary/50 bg-primary/10 backdrop-blur-sm">
-                  <span className="material-symbols-outlined text-primary text-sm">
-                    smart_toy
-                  </span>
-                  <span className="text-xs font-bold tracking-widest uppercase">
-                    Fast Trucks AI
-                  </span>
-                </div>
-                <h2 className="text-4xl font-bold mb-6">
-                  Inteligencia Predictiva para tu Negocio
-                </h2>
-                <p className="text-slate-400 max-w-2xl">
-                  Nuestra IA analiza miles de puntos de datos para decirte exactamente
-                  dónde y cuándo vender para maximizar tus utilidades.
-                </p>
-              </div>
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                {aiFeatures.map((item) => (
-                  <div
-                    key={item.title}
-                    className="p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 transition-all group"
-                  >
-                    <span className="material-symbols-outlined text-primary text-3xl mb-4 group-hover:scale-110 transition-transform">
-                      {item.icon}
-                    </span>
-                    <h3 className="font-bold text-xl mb-3">{item.title}</h3>
-                    <p className="text-slate-400 text-sm">{item.text}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-        ) : (
-          <section className="py-20 bg-white border-y border-slate-100" id="ai">
-            <div className="max-w-4xl mx-auto px-6 text-center space-y-4">
-              <div className="flex items-center justify-center gap-2 text-primary font-semibold">
-                <span className="material-symbols-outlined">hourglass_top</span>
-                <span>Módulo Fast Trucks AI en entrenamiento</span>
-              </div>
-              <h3 className="text-3xl font-bold text-slate-900">
-                Estamos recolectando datos para habilitar la IA
-              </h3>
-              <p className="text-slate-600 max-w-2xl mx-auto">
-                Usa el modo clásico hoy. Activaremos las predicciones y recomendaciones
-                inteligentes apenas alcancemos el volumen de datos necesario. Si quieres
-                ser de los primeros en probarlo, solicita la demo y te avisamos.
-              </p>
-              <div className="flex flex-wrap gap-3 justify-center">
-                <span className="px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold">
-                  Reportes en tiempo real listos
-                </span>
-                <span className="px-4 py-2 rounded-full bg-slate-100 text-slate-700 text-sm font-semibold">
-                  Proyecciones y alertas: en piloto
-                </span>
-              </div>
-            </div>
-          </section>
-        )}
-
-        <section className="py-24 bg-white" id="proceso">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center mb-20">
-              <h2 className="text-3xl font-bold text-slate-900">
-                Implementación en 4 pasos
-              </h2>
-            </div>
-            <div className="grid md:grid-cols-4 gap-8 relative">
-              <div className="hidden lg:block absolute top-12 left-1/4 right-1/4 h-[2px] bg-primary/10 -z-0"></div>
-              {steps.map((step) => (
-                <div
-                  key={step.number}
-                  className="relative z-10 text-center flex flex-col items-center"
-                >
-                  <div className="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center font-bold text-2xl mb-6 shadow-lg shadow-primary/30">
-                    {step.number}
-                  </div>
-                  <h4 className="font-bold text-lg mb-2 text-slate-900">
-                    {step.title}
-                  </h4>
-                  <p className="text-sm text-slate-500">{step.text}</p>
-                </div>
-              ))}
-              <div className="relative z-10 text-center flex flex-col items-center">
-                <div className="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center font-bold text-2xl mb-6 shadow-lg shadow-primary/30">
-                  4
-                </div>
-                <h4 className="font-bold text-lg mb-2 text-slate-900">
-                  {stepFour.title}
-                </h4>
-                <p className="text-sm text-slate-500">{stepFour.text}</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="py-24 bg-background-light">
-          <div className="max-w-7xl mx-auto px-6">
-            <h2 className="text-3xl font-bold text-center mb-16 text-slate-900">
-              Lo que dicen los dueños de negocios
-            </h2>
-            <div className="grid md:grid-cols-3 gap-8">
-              {testimonials.map((item) => {
-                const quote =
-                  aiEnabled && item.quoteAI
-                    ? item.quoteAI
-                    : item.quoteClassic ?? item.quote;
-                return (
-                  <div
-                    key={item.name}
-                    className="p-8 rounded-2xl bg-white shadow-sm border border-slate-100 flex flex-col gap-6"
-                  >
-                    <div className="flex text-primary">
-                      {Array.from({ length: 5 }).map((_, index) => (
-                        <span
-                          key={index}
-                          className="material-symbols-outlined font-fill"
-                        >
-                          star
-                        </span>
-                      ))}
-                    </div>
-                    <p className="text-slate-600 italic">{quote}</p>
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-full bg-slate-200 overflow-hidden">
-                        <Image
-                          alt={item.name}
-                          className="w-full h-full rounded-full object-cover"
-                          src={item.avatar}
-                          width={96}
-                          height={96}
-                        />
-                      </div>
-                      <div>
-                        <h5 className="font-bold text-sm">{item.name}</h5>
-                        <span className="text-xs text-slate-400">{item.role}</span>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        <section className="py-24 bg-white">
-          <div className="max-w-5xl mx-auto px-6">
-            <div className="bg-primary rounded-[2.5rem] p-12 text-center text-white relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-black/20 to-transparent"></div>
-              <div className="relative z-10 flex flex-col items-center gap-8">
-                <h2 className="text-4xl md:text-5xl font-black leading-tight">
-                  Descubre qué eventos realmente te generan utilidades
-                </h2>
-                <p className="text-lg opacity-90 max-w-2xl">
-                  Únete a cientos de emprendedores que ya están profesionalizando su
-                  operación con Fast Trucks.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
-                  <button className="px-10 py-5 bg-navy-deep text-white font-bold rounded-2xl shadow-2xl hover:bg-navy-deep/90 transition-all flex items-center justify-center gap-3">
-                    <svg
-                      className="w-6 h-6 fill-current"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                    >
-                      <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-1.557-.594-2.618-1.542-1.06-.948-1.597-1.884-1.741-2.289-.144-.405-.015-.624.114-.753.129-.129.288-.315.405-.441.117-.126.155-.216.234-.351.079-.135.039-.252-.02-.378-.06-.126-.54-1.297-.739-1.774-.194-.465-.394-.402-.54-.41-.139-.007-.3-.008-.459-.008-.16 0-.419.06-.639.3-.219.24-.84.822-.84 2.008s.859 2.333.979 2.494c.121.161 1.69 2.579 4.093 3.619.571.247 1.017.395 1.365.505.574.182 1.097.157 1.511.095.462-.069 1.423-.582 1.623-1.144.2-.563.2-1.044.14-1.144-.06-.099-.219-.155-.459-.275zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.66 1.434 5.174l-1.434 5.234 5.35-1.405c1.472.846 3.18 1.332 5.003 1.332 5.523 0 10-4.477 10-10S17.523 2 12 2z"></path>
-                    </svg>
-                    Hablar por WhatsApp
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <footer className="bg-background-dark text-slate-400 py-12">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-8 mb-8">
-            <div className="flex items-center gap-2">
-              <div className="bg-primary p-1 rounded-md text-white">
-                <span className="material-symbols-outlined text-lg block">
-                  local_shipping
-                </span>
-              </div>
-              <span className="text-lg font-bold text-white">Fast Trucks</span>
-            </div>
-            <div className="flex gap-8 text-sm">
-              <a className="hover:text-primary transition-colors" href="#">
-                Términos
-              </a>
-              <a className="hover:text-primary transition-colors" href="#">
-                Privacidad
-              </a>
-              <a className="hover:text-primary transition-colors" href="#">
-                Soporte
-              </a>
-              <a className="hover:text-primary transition-colors" href="#">
-                Contacto
-              </a>
-            </div>
-            <div className="flex gap-4">
-              <a
-                className="p-2 bg-white/5 rounded-lg hover:bg-white/10 transition-colors"
-                href="#"
-              >
-                <span className="material-symbols-outlined text-sm">language</span>
-              </a>
-            </div>
-          </div>
-          <div className="text-center text-xs border-t border-white/5 pt-8 text-white/60">
-            © 2024 Fast Trucks SaaS. Potenciando la gastronomía móvil en Chile y Latam.
-          </div>
-        </div>
-      </footer>
+      <main>{aiEnabled ? <AiLanding /> : <ClassicLanding />}</main>
     </div>
   );
 }
