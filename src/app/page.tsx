@@ -196,7 +196,7 @@ function ModeToggle({
   onChange: (mode: Mode) => void;
 }) {
   return (
-    <div className="hidden sm:flex items-center gap-1 rounded-full bg-white/70 border border-primary/20 px-1.5 py-1 shadow-sm">
+    <div className="flex items-center gap-1 rounded-full bg-white/70 border border-primary/20 px-1.5 py-1 shadow-sm">
       {(["ai", "clasico"] as Mode[]).map((value) => {
         const active = mode === value;
         return (
