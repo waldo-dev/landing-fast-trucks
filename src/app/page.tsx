@@ -245,7 +245,7 @@ function AiLanding() {
               {heroBadge.text}
             </div>
             <h1 className="text-5xl md:text-6xl font-black leading-[1.1] tracking-tight text-slate-900">
-              Controla tus ventas en ferias y eventos y toma{" "}
+              Controla tus ventas en ferias y eventos para tomar{" "}
               <span className="text-primary">decisiones inteligentes</span> con datos reales.
             </h1>
             <p className="text-lg text-slate-600 leading-relaxed max-w-xl">
