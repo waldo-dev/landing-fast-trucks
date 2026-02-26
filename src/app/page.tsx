@@ -442,9 +442,9 @@ function AiLanding() {
               Nuestra IA analiza miles de puntos de datos para decirte exactamente dónde y cuándo vender para maximizar tus utilidades.
             </p>*/}
             <div>
-                <h2 className="text-3xl font-bold text-slate-900 mb-4">Una solución diseñada para la velocidad del terreno</h2>
-                <p className="text-slate-600">Gestiona múltiples puntos de venta de forma centralizada y en tiempo real.</p>
-              </div>
+              <h2 className="text-3xl font-bold text-white mb-4">Una solución diseñada para la velocidad del terreno</h2>
+              <p className="text-slate-200">Gestiona múltiples puntos de venta de forma centralizada y en tiempo real.</p>
+            </div>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {aiSolutionFeatures.map((item) => (
