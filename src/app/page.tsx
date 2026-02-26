@@ -1,9 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type Mode = "ai" | "clasico";
+
+const WHATSAPP_URL =
+  "https://wa.me/56940676501?text=Hola%20Chilsmart%20%2C%20quiero%20una%20demo%20%2F%20acceso%20a%20Fast%20Trucks";
+const WEBHOOK_URL = "https://n8n.chilsmart.com/webhook-test/TAIGA";
 
 const aiProblems = [
   {
@@ -43,6 +47,11 @@ const aiSolutionFeatures = [
     icon: "bar_chart",
     title: "Reportes por evento",
     text: "Analiza el rendimiento individual de cada ubicación y compara resultados históricos.",
+  },
+  {
+    icon: "insights",
+    title: "Control de rentabilidad en tiempo real",
+    text: "Visualiza ingresos, costos estimados y márgenes por evento para tomar decisiones estratégicas al instante.",
   },
 ];
 
@@ -89,16 +98,16 @@ const aiSteps = [
 
 const testimonials = [
   {
-    name: "Andrés Rivera",
-    role: "Dueño, Burger Street",
+    name: "Gabriela Ramirez",
+    role: "Gerente, Gaby's Burgers",
     quote:
       '“Fast Trucks nos permitió ver que el evento más grande no siempre era el más rentable. Ahora elegimos mejor dónde estar.”',
     avatar:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuDB8zScc_zPs5dBvobHCX2Ib4Gc4yG-vGqpAycuYPKnjc6c-OvuCQtWAzzTmj8a9CFgozWsGysM9fl131eYhBgzBcffbFmbwEooH2Yp2A1l8LP0i4m4ykZN_qn9xLBpyPB_QmmC0fetqrNIPHEd7X7TdnGG4HB9wlMs9Xp_bXEhHCKANtx-n1RQGIwSVp_QoX80vYL8QvxMtrNyYfia62WRwu1DkRYo6rPBfBTpoyiT_Hr8h4qyiJdn7ZCzkd4IYZl2rRVtgnZ9_0gX",
   },
   {
-    name: "Carolina Soto",
-    role: "Gerente, Taco Mobile",
+    name: "Sebastian Villagrán",
+    role: "Gerente, Pigzas pizzeria",
     quote:
       "“La gestión de inventario para eventos es otro nivel. Eliminamos el desperdicio en un 30% desde el primer mes.”",
     avatar:
@@ -108,7 +117,7 @@ const testimonials = [
     name: "Marco Venegas",
     role: "Fundador, Coffee Van Chile",
     quoteAI:
-      "“El módulo AI es increíble. Sus proyecciones nos ayudan a saber exactamente cuánto personal llevar a cada festival.”",
+      "“El módulo Reportes es increíble. Sus proyecciones nos ayudan a saber exactamente cuánto personal llevar a cada festival.”",
     quoteClassic:
       "“Incluso sin IA, los reportes en tiempo real nos permiten ajustar personal y stock en cada festival.”",
     avatar:
@@ -188,6 +197,79 @@ const classicRoadmap = [
   },
 ];
 
+const faqItems = [
+  {
+    question: "¿Cómo separo las ventas de eventos y local fijo?",
+    answer:
+      "Activa el evento antes de vender y todas las transacciones se etiquetan automáticamente. Luego ves ingresos, costos y margen por evento o por tu local fijo.",
+  },
+  {
+    question: "¿El POS imprime comandas y se integra con Transbank?",
+    answer:
+      "Sí. Puedes imprimir comandas por Bluetooth para cocina/barra y conciliar pagos con Transbank para evitar descuadres de caja.",
+  },
+  {
+    question: "¿Cómo controlo inventario y recetas?",
+    answer:
+      "Carga tus recetas y descontamos insumos por venta. Obtienes alertas de stock, costos por plato y valorización de inventario en planes avanzados.",
+  },
+  {
+    question: "¿Puedo operar múltiples cajas y turnos en un mismo día?",
+    answer:
+      "Puedes abrir varias cajas y turnos simultáneos, con arqueos y movimientos separados. Ideal para ferias grandes o varios food trucks.",
+  },
+  {
+    question: "¿Qué reportes en tiempo real obtengo?",
+    answer:
+      "Dashboard con ventas por evento, margen estimado, medios de pago, ranking de productos y proyección simple para decidir personal y stock.",
+  },
+  {
+    question: "¿Qué tan rápido puedo empezar?",
+    answer:
+      "En menos de un día: cargamos tu menú, precios y medios de pago. Incluye onboarding y acompañamiento inicial.",
+  },
+];
+
+const pricingPlans = [
+  {
+    name: "Plan Inicial",
+    price: "$ 22.500 /mes",
+    tagline: "Impulsa tu negocio con las herramientas esenciales.",
+    features: [
+      "Punto de venta rápido para ferias y local fijo",
+      "Arqueos y movimientos de caja en cada turno",
+      "Impresión de comandas (Bluetooth)",
+      "Descuentos y combos configurables",
+      "Carta QR siempre actualizada",
+    ],
+  },
+  {
+    name: "Plan Avanzado",
+    price: "$ 32.500 /mes",
+    tagline: "Profesionaliza tu gestión, analiza y toma decisiones sobre tu negocio.",
+    features: [
+      "Todo lo del Plan Inicial",
+      "Inventario básico por insumo y alertas de stock",
+      "Costeo de recetas y margen por producto",
+      "Gestión de clientes y proveedores",
+      "Reportes diarios y por evento con comparativas",
+    ],
+    highlight: true,
+  },
+  {
+    name: "Plan Pro",
+    price: "$ 50.000 /mes",
+    tagline: "Controla cada detalle con herramientas avanzadas.",
+    features: [
+      "Todo lo del Plan Avanzado",
+      "Múltiples cajas y turnos simultáneos",
+      "Estado de resultados por evento y consolidado",
+      "Listas de precios por canal o evento",
+      "Inventario valorizado y trazabilidad",
+    ],
+  },
+];
+
 function ModeToggle({
   mode,
   onChange,
@@ -221,7 +303,7 @@ function ModeToggle({
 
 function AiLanding() {
   const heroBadge = {
-    text: "Nuevo: Módulo Fast Trucks AI",
+    text: "Proximamente: Módulo Fast Trucks AI",
     tone: "text-primary bg-primary/10",
   };
 
@@ -253,13 +335,19 @@ function AiLanding() {
               Deja de adivinar y comienza a optimizar.
             </p>
             <div className="flex flex-wrap gap-4">
-              <button className="px-8 py-4 text-base font-bold bg-primary text-white rounded-xl shadow-xl shadow-primary/30 hover:translate-y-[-2px] transition-all">
+              <a
+                className="px-8 py-4 text-base font-bold bg-primary text-white rounded-xl shadow-xl shadow-primary/30 hover:translate-y-[-2px] transition-all cursor-pointer"
+                href="#contacto"
+              >
                 Solicitar demo gratuita
-              </button>
-              <button className="px-8 py-4 text-base font-bold bg-white border border-slate-200 text-slate-900 rounded-xl shadow-sm hover:bg-slate-50 transition-all flex items-center gap-2">
+              </a>
+              <a
+                className="px-8 py-4 text-base font-bold bg-white border border-slate-200 text-slate-900 rounded-xl shadow-sm hover:bg-slate-50 transition-all flex items-center gap-2 cursor-pointer"
+                href="#precios"
+              >
                 <span className="material-symbols-outlined">play_circle</span>
                 Ver cómo funciona
-              </button>
+              </a>
             </div>
           </div>
           <div className="relative group">
@@ -268,7 +356,7 @@ function AiLanding() {
               <Image
                 alt="Dashboard de ventas"
                 className="w-full h-auto"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKl4ycpbNal8oh0lKome-8EKOuXlehoFfMbgzleDpHUDegSxs1O_OANvi15HQx8RZxWphfTIOCBB11tZAFR3RsTof28N8P6XuB0Ynxl4AwGwqnnVt_NrHVyKoaRd7gWdsQQsYkevmdmjjaCzpurwme8enSvJfxiSz6N08Z4achpOx1wvDx7sMFWN3ZicYWRm118czdcQAefVUplkWWpNVrz9l5cuWInS_us0M_j2R_LK6FBY9AGOwrJwAI1hu22Ue2WanzxmYNMCpy"
+                src="https://firebasestorage.googleapis.com/v0/b/fast-trucks.firebasestorage.app/o/dashboard.jpeg?alt=media&token=c124bd54-e9fd-419d-b54e-fed27f67b0c7"
                 width={1600}
                 height={900}
                 sizes="(min-width: 1024px) 50vw, 100vw"
@@ -310,7 +398,7 @@ function AiLanding() {
                 <Image
                   alt="Punto de venta móvil"
                   className="rounded-xl shadow-lg border border-slate-200"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCT31ayx6u935e1Yz6DjUjq7vBI2L1-MC-UEP4zsbcEZggo8yLlgPE8PCVEjTEbWOHWRVurNiwTI3h3Y5d72knCUIpwEw6LlYgeL8WpEcn93XcFtanQb_c4NBcrklJIm7gCEJwXMIc3ixYY8cfcor5kXB9Djz4Pwdy_QvPiHB_cMmcAfOgPEIgZE-p74dnWOqYa6dNLdC_kouz2shqgWc2U1DneabL0fjAQRxfL9x6YBGWdriONGM6i4Yj0xgkBaG5uzmx9wTDpLhK6"
+                  src="https://firebasestorage.googleapis.com/v0/b/fast-trucks.firebasestorage.app/o/food-truck.png?alt=media&token=ff65467d-fafa-4612-84fe-da45f57901c1"
                   width={1400}
                   height={900}
                   sizes="(min-width: 1024px) 50vw, 100vw"
@@ -347,15 +435,19 @@ function AiLanding() {
           <div className="flex flex-col items-center text-center mb-16">
             <div className="flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full border border-primary/50 bg-primary/10 backdrop-blur-sm">
               <span className="material-symbols-outlined text-primary text-sm">smart_toy</span>
-              <span className="text-xs font-bold tracking-widest uppercase">Fast Trucks AI</span>
+              <span className="text-xs font-bold tracking-widest uppercase">Fast Trucks</span>
             </div>
-            <h2 className="text-4xl font-bold mb-6">Inteligencia Predictiva para tu Negocio</h2>
+            {/*<h2 className="text-4xl font-bold mb-6">Inteligencia Predictiva para tu Negocio</h2>
             <p className="text-slate-400 max-w-2xl">
               Nuestra IA analiza miles de puntos de datos para decirte exactamente dónde y cuándo vender para maximizar tus utilidades.
-            </p>
+            </p>*/}
+            <div>
+                <h2 className="text-3xl font-bold text-slate-900 mb-4">Una solución diseñada para la velocidad del terreno</h2>
+                <p className="text-slate-600">Gestiona múltiples puntos de venta de forma centralizada y en tiempo real.</p>
+              </div>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {aiFeatures.map((item) => (
+            {aiSolutionFeatures.map((item) => (
               <div
                 key={item.title}
                 className="p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 transition-all group"
@@ -439,6 +531,12 @@ function AiLanding() {
         </div>
       </section>
 
+      <PricingSection />
+
+      <FAQSection />
+
+      <ContactSection source="contacto-ai" />
+
       <section className="py-24 bg-white">
         <div className="max-w-5xl mx-auto px-6">
           <div className="bg-primary rounded-[2.5rem] p-12 text-center text-white relative overflow-hidden">
@@ -449,12 +547,17 @@ function AiLanding() {
                 Únete a cientos de emprendedores que ya están profesionalizando su operación con Fast Trucks.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
-                <button className="px-10 py-5 bg-navy-deep text-white font-bold rounded-2xl shadow-2xl hover:bg-navy-deep/90 transition-all flex items-center justify-center gap-3">
+                <a
+                  className="px-10 py-5 bg-navy-deep text-white font-bold rounded-2xl shadow-2xl hover:bg-navy-deep/90 transition-all flex items-center justify-center gap-3 cursor-pointer"
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-1.557-.594-2.618-1.542-1.06-.948-1.597-1.884-1.741-2.289-.144-.405-.015-.624.114-.753.129-.129.288-.315.405-.441.117-.126.155-.216.234-.351.079-.135.039-.252-.02-.378-.06-.126-.54-1.297-.739-1.774-.194-.465-.394-.402-.54-.41-.139-.007-.3-.008-.459-.008-.16 0-.419.06-.639.3-.219.24-.84.822-.84 2.008s.859 2.333.979 2.494c.121.161 1.69 2.579 4.093 3.619.571.247 1.017.395 1.365.505.574.182 1.097.157 1.511.095.462-.069 1.423-.582 1.623-1.144.2-.563.2-1.044.14-1.144-.06-.099-.219-.155-.459-.275zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.66 1.434 5.174l-1.434 5.234 5.35-1.405c1.472.846 3.18 1.332 5.003 1.332 5.523 0 10-4.477 10-10S17.523 2 12 2z"></path>
                   </svg>
                   Hablar por WhatsApp
-                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -485,13 +588,21 @@ function ClassicLanding() {
               Fast Trucks.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row">
-              <button className="inline-flex items-center justify-center rounded-lg bg-primary px-8 py-4 text-base font-bold text-white shadow-xl shadow-primary/30 hover:scale-[1.02] transition-transform">
+              <a
+                className="inline-flex items-center justify-center rounded-lg bg-primary px-8 py-4 text-base font-bold text-white shadow-xl shadow-primary/30 hover:scale-[1.02] transition-transform cursor-pointer"
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noreferrer"
+              >
                 Solicitar acceso anticipado
-              </button>
-              <button className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-slate-200 bg-transparent px-8 py-4 text-base font-bold text-navy-deep hover:bg-slate-50 transition-colors">
+              </a>
+              <a
+                className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-slate-200 bg-transparent px-8 py-4 text-base font-bold text-navy-deep hover:bg-slate-50 transition-colors cursor-pointer"
+                href="#precios"
+              >
                 <span className="material-symbols-outlined">play_circle</span>
                 Ver demo
-              </button>
+              </a>
             </div>
           </div>
           <div className="relative">
@@ -681,6 +792,12 @@ function ClassicLanding() {
         </div>
       </section>
 
+      <PricingSection />
+
+      <FAQSection />
+
+      <ContactSection source="contacto-clasico" />
+
       <section className="px-6 py-24 md:px-20">
         <div className="mx-auto max-w-5xl overflow-hidden rounded-[2rem] bg-navy-deep p-8 md:p-16 relative">
           <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary/20 blur-3xl"></div>
@@ -713,39 +830,7 @@ function ClassicLanding() {
                 <span className="text-sm font-medium text-slate-400">42 dueños ya se unieron</span>
               </div>
             </div>
-            <div className="rounded-2xl bg-white p-8">
-              <form className="flex flex-col gap-4">
-                <div>
-                  <label className="mb-2 block text-sm font-bold text-navy-deep">Nombre completo</label>
-                  <input
-                    className="w-full rounded-lg border-slate-200 bg-slate-50 p-3 text-slate-900 focus:border-primary focus:ring-primary"
-                    placeholder="Ej: Juan Pérez"
-                    type="text"
-                  />
-                </div>
-                <div>
-                  <label className="mb-2 block text-sm font-bold text-navy-deep">Email de empresa</label>
-                  <input
-                    className="w-full rounded-lg border-slate-200 bg-slate-50 p-3 text-slate-900 focus:border-primary focus:ring-primary"
-                    placeholder="juan@tu-foodtruck.cl"
-                    type="email"
-                  />
-                </div>
-                <div>
-                  <label className="mb-2 block text-sm font-bold text-navy-deep">Tipo de negocio</label>
-                  <select className="w-full rounded-lg border-slate-200 bg-slate-50 p-3 text-slate-900 focus:border-primary focus:ring-primary">
-                    <option>Food Truck</option>
-                    <option>Local físico</option>
-                    <option>Eventos / Catering</option>
-                    <option>Comida rápida</option>
-                  </select>
-                </div>
-                <button className="mt-4 w-full rounded-lg bg-primary py-4 text-lg font-black text-white shadow-xl shadow-primary/20 hover:bg-primary/90 transition-all">
-                  Registrarme ahora
-                </button>
-                <p className="text-center text-xs text-slate-400">Al registrarte, aceptas nuestros términos de servicio.</p>
-              </form>
-            </div>
+            <ContactForm source="cta-pro" />
           </div>
         </div>
       </section>
@@ -806,7 +891,7 @@ function ClassicLanding() {
             </div>
           </div>
           <div className="mt-12 border-t border-slate-100 pt-8 text-center text-xs text-slate-400">
-            © 2024 Fast Trucks SaaS. Hecho para Chile. Todos los derechos reservados.
+            © 2026 Chilsmart. Todos los derechos reservados.
           </div>
         </div>
       </footer>
@@ -814,9 +899,219 @@ function ClassicLanding() {
   );
 }
 
+function PricingSection() {
+  return (
+    <section className="px-6 py-24 md:px-20 bg-white" id="precios">
+      <div className="mx-auto max-w-6xl">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-black text-navy-deep">Planes que crecen contigo</h2>
+          <p className="mt-3 text-slate-600">Elige el plan de Fast Trucks que mejor se adapta a tu operación.</p>
+        </div>
+        <div className="grid gap-6 md:grid-cols-3">
+          {pricingPlans.map((plan) => (
+            <div
+              key={plan.name}
+              className={`rounded-2xl border bg-white p-8 shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl ${
+                plan.highlight ? "border-primary shadow-primary/20 ring-2 ring-primary/10" : "border-slate-200"
+              }`}
+            >
+              <div className="flex items-center justify-between">
+                <h3 className="text-xl font-black text-navy-deep">{plan.name}</h3>
+                {plan.highlight && (
+                  <span className="text-xs font-bold uppercase tracking-wide text-primary bg-primary/10 px-3 py-1 rounded-full">
+                    Más elegido
+                  </span>
+                )}
+              </div>
+              <p className="mt-2 text-3xl font-black text-navy-deep">{plan.price}</p>
+              <p className="mt-2 text-sm text-slate-600">{plan.tagline}</p>
+              <ul className="mt-6 space-y-3 text-sm text-slate-700">
+                {plan.features.map((feature) => (
+                  <li key={feature} className="flex items-start gap-2">
+                    <span className="material-symbols-outlined text-primary text-base mt-[2px]">check_circle</span>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <a
+                className="mt-8 w-full inline-flex justify-center rounded-xl border border-primary bg-primary text-white font-bold py-3 shadow-primary/20 shadow-lg hover:bg-primary/90 transition-colors cursor-pointer"
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Ver todas las funcionalidades
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ContactSection({ source }: { source: string }) {
+  return (
+    <section className="px-6 py-16 md:px-20 bg-background-light" id="contacto">
+      <div className="mx-auto max-w-5xl grid lg:grid-cols-2 gap-10 items-center">
+        <div className="space-y-4">
+          <h3 className="text-3xl font-black text-navy-deep">¿Prefieres que te contactemos?</h3>
+          <p className="text-slate-600">
+            Déjanos tus datos y agenda una demo. También puedes escribirnos directo por WhatsApp si necesitas una respuesta rápida.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <a
+              className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-bold text-white shadow-primary/20 shadow-lg hover:bg-primary/90 transition-colors cursor-pointer"
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span className="material-symbols-outlined text-base">chat</span>
+              Abrir WhatsApp
+            </a>
+          </div>
+        </div>
+        <ContactForm source={source} />
+      </div>
+    </section>
+  );
+}
+
+function FAQSection() {
+  return (
+    <section className="px-6 py-20 md:px-20 bg-white border-t border-slate-100" id="faq">
+      <div className="mx-auto max-w-5xl">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-black text-navy-deep">Preguntas frecuentes</h2>
+          <p className="mt-3 text-slate-600">
+            Todo lo que necesitas para operar ventas en terreno, controlar stock y decidir con datos.
+          </p>
+        </div>
+        <div className="border border-slate-200 rounded-2xl bg-white shadow-sm divide-y divide-slate-200">
+          {faqItems.map((item) => (
+            <div key={item.question} className="px-5 py-4">
+              <h3 className="text-base font-bold text-navy-deep">{item.question}</h3>
+              <p className="text-sm text-slate-600 mt-1">{item.answer}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ContactForm({ source }: { source: string }) {
+  const [status, setStatus] = useState<"idle" | "loading" | "ok" | "error">("idle");
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setStatus("loading");
+    const data = new FormData(event.currentTarget);
+    const payload = {
+      nombre: data.get("nombre"),
+      email: data.get("email"),
+      negocio: data.get("negocio"),
+      mensaje: data.get("mensaje"),
+      origen: source,
+    };
+    try {
+      const res = await fetch(WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error("webhook_error");
+      setStatus("ok");
+      event.currentTarget.reset();
+    } catch (error) {
+      console.error("Error enviando contacto", error);
+      setStatus("error");
+    }
+  }
+
+  return (
+    <div className="rounded-2xl bg-white p-8 shadow-xl shadow-primary/10 border border-slate-100">
+      <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+        <div>
+          <label className="mb-2 block text-sm font-bold text-navy-deep">Nombre completo</label>
+          <input
+            name="nombre"
+            required
+            className="w-full rounded-lg border-slate-200 bg-slate-50 p-3 text-slate-900 focus:border-primary focus:ring-primary"
+            placeholder="Ej: Juan Pérez"
+            type="text"
+          />
+        </div>
+        <div>
+          <label className="mb-2 block text-sm font-bold text-navy-deep">Email de empresa</label>
+          <input
+            name="email"
+            required
+            className="w-full rounded-lg border-slate-200 bg-slate-50 p-3 text-slate-900 focus:border-primary focus:ring-primary"
+            placeholder="juan@tu-foodtruck.cl"
+            type="email"
+          />
+        </div>
+        <div>
+          <label className="mb-2 block text-sm font-bold text-navy-deep">Tipo de negocio</label>
+          <select
+            name="negocio"
+            required
+            className="w-full rounded-lg border-slate-200 bg-slate-50 p-3 text-slate-900 focus:border-primary focus:ring-primary"
+          >
+            <option value="">Selecciona una opción</option>
+            <option>Food Truck</option>
+            <option>Local físico</option>
+            <option>Eventos / Catering</option>
+            <option>Comida rápida</option>
+          </select>
+        </div>
+        <div>
+          <label className="mb-2 block text-sm font-bold text-navy-deep">Mensaje</label>
+          <textarea
+            name="mensaje"
+            rows={3}
+            className="w-full rounded-lg border-slate-200 bg-slate-50 p-3 text-slate-900 focus:border-primary focus:ring-primary"
+            placeholder="Cuéntanos tu contexto y fechas de eventos"
+          />
+        </div>
+        <button
+          type="submit"
+          disabled={status === "loading"}
+          className="mt-1 w-full rounded-lg bg-primary py-4 text-lg font-black text-white shadow-xl shadow-primary/20 hover:bg-primary/90 transition-all disabled:opacity-70 cursor-pointer"
+        >
+          {status === "loading" ? "Enviando..." : "Enviar y agendar demo"}
+        </button>
+        {status === "ok" && (
+          <p className="text-center text-sm font-semibold text-green-600">¡Recibido! Te contactaremos pronto.</p>
+        )}
+        {status === "error" && (
+          <p className="text-center text-sm font-semibold text-red-600">No pudimos enviar. Intenta de nuevo en unos segundos.</p>
+        )}
+      </form>
+    </div>
+  );
+}
+
 export default function Home() {
   const [mode, setMode] = useState<Mode>("ai");
   const aiEnabled = mode === "ai";
+
+  // Notificar visita a webhook (se ejecuta solo en cliente)
+  useEffect(() => {
+    const payload = {
+      event: "visit",
+      ts: Date.now(),
+      path: typeof window !== "undefined" ? window.location.pathname : "/",
+      ua: typeof navigator !== "undefined" ? navigator.userAgent : "",
+    };
+    fetch(WEBHOOK_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    }).catch((error) => {
+      console.warn("No se pudo enviar visita", error);
+    });
+  }, []);
 
   const navLinks = aiEnabled
     ? [
@@ -824,12 +1119,18 @@ export default function Home() {
         { href: "#solucion", label: "Solución" },
         { href: "#ai", label: "Fast Trucks AI" },
         { href: "#proceso", label: "Cómo funciona" },
+        { href: "#precios", label: "Precios" },
+        { href: "#contacto", label: "Contacto" },
+        { href: "#faq", label: "FAQ" },
       ]
     : [
         { href: "#problemas", label: "Problemas" },
         { href: "#soluciones", label: "Soluciones" },
         { href: "#beneficios", label: "Beneficios" },
         { href: "#roadmap", label: "Próximamente" },
+        { href: "#precios", label: "Precios" },
+        { href: "#contacto", label: "Contacto" },
+        { href: "#faq", label: "FAQ" },
       ];
 
   return (
@@ -850,13 +1151,21 @@ export default function Home() {
             ))}
           </nav>
           <div className="flex items-center gap-3">
-            <ModeToggle mode={mode} onChange={setMode} />
-            <button className="hidden sm:block px-5 py-2.5 text-sm font-semibold text-navy-deep border border-primary/20 rounded-lg hover:bg-primary/5 transition-colors">
+            {/*<ModeToggle mode={mode} onChange={setMode} />*/}
+            <a
+              className="hidden sm:block px-5 py-2.5 text-sm font-semibold text-navy-deep border border-primary/20 rounded-lg hover:bg-primary/5 transition-colors cursor-pointer"
+              href="#precios"
+            >
               Iniciar sesión
-            </button>
-            <button className="px-6 py-2.5 text-sm font-bold bg-primary text-white rounded-lg shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all">
+            </a>
+            <a
+              className="px-6 py-2.5 text-sm font-bold bg-primary text-white rounded-lg shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noreferrer"
+            >
               {aiEnabled ? "Solicitar demo" : "Solicitar acceso"}
-            </button>
+            </a>
           </div>
         </div>
       </header>

@@ -24,6 +24,10 @@ body {
   line-height: 1.6;
 }
 
+button {
+  cursor: pointer;
+}
+
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
   display: inline-flex;
