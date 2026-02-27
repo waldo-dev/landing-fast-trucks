@@ -248,7 +248,11 @@ const pricingPlans = [
     price: "$ 32.500 /mes",
     tagline: "Profesionaliza tu gestión, analiza y toma decisiones sobre tu negocio.",
     features: [
-      "Todo lo del Plan Inicial",
+      "Punto de venta rápido para ferias y local fijo",
+      "Arqueos y movimientos de caja en cada turno",
+      "Impresión de comandas (Bluetooth)",
+      "Descuentos y combos configurables",
+      "Carta QR siempre actualizada",
       "Inventario básico por insumo y alertas de stock",
       "Costeo de recetas y margen por producto",
       "Gestión de clientes y proveedores",
@@ -261,7 +265,15 @@ const pricingPlans = [
     price: "$ 50.000 /mes",
     tagline: "Controla cada detalle con herramientas avanzadas.",
     features: [
-      "Todo lo del Plan Avanzado",
+      "Punto de venta rápido para ferias y local fijo",
+      "Arqueos y movimientos de caja en cada turno",
+      "Impresión de comandas (Bluetooth)",
+      "Descuentos y combos configurables",
+      "Carta QR siempre actualizada",
+      "Inventario básico por insumo y alertas de stock",
+      "Costeo de recetas y margen por producto",
+      "Gestión de clientes y proveedores",
+      "Reportes diarios y por evento con comparativas",
       "Múltiples cajas y turnos simultáneos",
       "Estado de resultados por evento y consolidado",
       "Listas de precios por canal o evento",
@@ -269,6 +281,8 @@ const pricingPlans = [
     ],
   },
 ];
+
+const allPricingFeatures = Array.from(new Set(pricingPlans.flatMap((plan) => plan.features)));
 
 function ModeToggle({
   mode,
@@ -912,7 +926,7 @@ function PricingSection() {
             <div
               key={plan.name}
               className={`rounded-2xl border bg-white p-8 shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl ${
-                plan.highlight ? "border-primary shadow-primary/20 ring-2 ring-primary/10" : "border-slate-200"
+                plan.highlight ? "border-primary shadow-primary/20 ring-2 ring-primary/10 order-first md:order-none" : "border-slate-200"
               }`}
             >
               <div className="flex items-center justify-between">
@@ -925,13 +939,25 @@ function PricingSection() {
               </div>
               <p className="mt-2 text-3xl font-black text-navy-deep">{plan.price}</p>
               <p className="mt-2 text-sm text-slate-600">{plan.tagline}</p>
-              <ul className="mt-6 space-y-3 text-sm text-slate-700">
-                {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-2">
-                    <span className="material-symbols-outlined text-primary text-base mt-[2px]">check_circle</span>
-                    <span>{feature}</span>
-                  </li>
-                ))}
+              <ul className="mt-6 space-y-3 text-sm">
+                {allPricingFeatures.map((feature) => {
+                  const included = plan.features.includes(feature);
+                  return (
+                    <li
+                      key={feature}
+                      className={`flex items-start gap-2 ${included ? "text-slate-700" : "text-slate-400 line-through"}`}
+                    >
+                      <span
+                        className={`material-symbols-outlined text-base mt-[2px] ${
+                          included ? "text-primary" : "text-slate-300"
+                        }`}
+                      >
+                        {included ? "check_circle" : "cancel"}
+                      </span>
+                      <span>{feature}</span>
+                    </li>
+                  );
+                })}
               </ul>
               <a
                 className="mt-8 w-full inline-flex justify-center rounded-xl border border-primary bg-primary text-white font-bold py-3 shadow-primary/20 shadow-lg hover:bg-primary/90 transition-colors cursor-pointer"
