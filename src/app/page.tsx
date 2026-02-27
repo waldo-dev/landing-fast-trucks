@@ -101,7 +101,7 @@ const testimonials = [
     name: "Gabriela Ramirez",
     role: "Gerente, Gaby's Burgers",
     quote:
-      '“Fast Trucks nos permitió ver que el evento más grande no siempre era el más rentable. Ahora elegimos mejor dónde estar.”',
+      '“Operfoods nos permitió ver que el evento más grande no siempre era el más rentable. Ahora elegimos mejor dónde estar.”',
     avatar:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuDB8zScc_zPs5dBvobHCX2Ib4Gc4yG-vGqpAycuYPKnjc6c-OvuCQtWAzzTmj8a9CFgozWsGysM9fl131eYhBgzBcffbFmbwEooH2Yp2A1l8LP0i4m4ykZN_qn9xLBpyPB_QmmC0fetqrNIPHEd7X7TdnGG4HB9wlMs9Xp_bXEhHCKANtx-n1RQGIwSVp_QoX80vYL8QvxMtrNyYfia62WRwu1DkRYo6rPBfBTpoyiT_Hr8h4qyiJdn7ZCzkd4IYZl2rRVtgnZ9_0gX",
   },
@@ -303,7 +303,7 @@ function ModeToggle({
 
 function AiLanding() {
   const heroBadge = {
-    text: "Proximamente: Módulo Fast Trucks AI",
+    text: "Proximamente: Módulo Operfoods AI",
     tone: "text-primary bg-primary/10",
   };
 
@@ -435,7 +435,7 @@ function AiLanding() {
           <div className="flex flex-col items-center text-center mb-16">
             <div className="flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full border border-primary/50 bg-primary/10 backdrop-blur-sm">
               <span className="material-symbols-outlined text-primary text-sm">smart_toy</span>
-              <span className="text-xs font-bold tracking-widest uppercase">Fast Trucks</span>
+              <span className="text-xs font-bold tracking-widest uppercase">Operfoods</span>
             </div>
             {/*<h2 className="text-4xl font-bold mb-6">Inteligencia Predictiva para tu Negocio</h2>
             <p className="text-slate-400 max-w-2xl">
@@ -544,7 +544,7 @@ function AiLanding() {
             <div className="relative z-10 flex flex-col items-center gap-8">
               <h2 className="text-4xl md:text-5xl font-black leading-tight">Descubre qué eventos realmente te generan utilidades</h2>
               <p className="text-lg opacity-90 max-w-2xl">
-                Únete a cientos de emprendedores que ya están profesionalizando su operación con Fast Trucks.
+                Únete a cientos de emprendedores que ya están profesionalizando su operación con Operfoods.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
                 <a
@@ -585,7 +585,7 @@ function ClassicLanding() {
             </h1>
             <p className="text-lg leading-relaxed text-slate-600 md:text-xl">
               Deja de adivinar tus ganancias. Toma decisiones basadas en datos reales y optimiza la rentabilidad de tu negocio gastronómico con
-              Fast Trucks.
+              Operfoods.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row">
               <a
@@ -725,7 +725,7 @@ function ClassicLanding() {
 
       <section className="bg-navy-deep px-6 py-20 text-white md:px-20" id="beneficios">
         <div className="mx-auto max-w-7xl text-center">
-          <h2 className="mb-16 text-3xl font-black md:text-4xl">Por qué elegir Fast Trucks</h2>
+          <h2 className="mb-16 text-3xl font-black md:text-4xl">Por qué elegir Operfoods</h2>
           <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
             {classicBenefits.map((item) => (
               <div key={item.title} className="flex flex-col items-center gap-4">
@@ -843,7 +843,7 @@ function ClassicLanding() {
                 <div className="flex h-8 w-8 items-center justify-center rounded bg-primary text-white">
                   <span className="material-symbols-outlined text-sm">local_shipping</span>
                 </div>
-                <span className="text-lg font-black tracking-tight text-navy-deep">Fast Trucks</span>
+                <span className="text-lg font-black tracking-tight text-navy-deep">Operfoods</span>
               </div>
               <p className="max-w-xs text-sm text-slate-500">
                 Optimizando la rentabilidad de la gastronomía móvil en Chile con tecnología de vanguardia.
@@ -905,7 +905,7 @@ function PricingSection() {
       <div className="mx-auto max-w-6xl">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-black text-navy-deep">Planes que crecen contigo</h2>
-          <p className="mt-3 text-slate-600">Elige el plan de Fast Trucks que mejor se adapta a tu operación.</p>
+          <p className="mt-3 text-slate-600">Elige el plan de Operfoods que mejor se adapta a tu operación.</p>
         </div>
         <div className="grid gap-6 md:grid-cols-3">
           {pricingPlans.map((plan) => (
@@ -1117,7 +1117,7 @@ export default function Home() {
     ? [
         { href: "#problemas", label: "Problemas" },
         { href: "#solucion", label: "Solución" },
-        { href: "#ai", label: "Fast Trucks AI" },
+        { href: "#ai", label: "Operfoods AI" },
         { href: "#proceso", label: "Cómo funciona" },
         { href: "#precios", label: "Precios" },
         { href: "#contacto", label: "Contacto" },
@@ -1141,7 +1141,7 @@ export default function Home() {
             <div className="bg-primary p-1.5 rounded-lg text-white">
               <span className="material-symbols-outlined text-2xl block">local_shipping</span>
             </div>
-            <span className="text-xl font-bold tracking-tight text-slate-900">Fast Trucks</span>
+            <span className="text-xl font-bold tracking-tight text-slate-900">Operfoods</span>
           </div>
           <nav className="hidden md:flex items-center gap-8 text-sm font-semibold">
             {navLinks.map((item) => (
