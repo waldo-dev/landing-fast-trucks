@@ -5,9 +5,8 @@ import { useEffect, useState } from "react";
 
 type Mode = "ai" | "clasico";
 
-const WHATSAPP_URL =
-  "https://wa.me/56940676501?text=Hola%20Chilsmart%20%2C%20quiero%20una%20demo%20%2F%20acceso%20a%20Fast%20Trucks";
 const WEBHOOK_URL = "https://n8n.chilsmart.com/webhook-test/TAIGA";
+const CTA_WEBHOOK_URL = "https://n8n.chilsmart.com/webhook/operfoods-contact";
 
 const aiProblems = [
   {
@@ -315,7 +314,7 @@ function ModeToggle({
   );
 }
 
-function AiLanding() {
+function AiLanding({ onCta }: { onCta: (source: string) => void }) {
   const heroBadge = {
     text: "Proximamente: Módulo Operfoods AI",
     tone: "text-primary bg-primary/10",
@@ -349,19 +348,21 @@ function AiLanding() {
               Deja de adivinar y comienza a optimizar.
             </p>
             <div className="flex flex-wrap gap-4">
-              <a
+              <button
                 className="px-8 py-4 text-base font-bold bg-primary text-white rounded-xl shadow-xl shadow-primary/30 hover:translate-y-[-2px] transition-all cursor-pointer"
-                href="#contacto"
+                type="button"
+                onClick={() => onCta("cta-ai-hero-demo")}
               >
                 Solicitar demo gratuita
-              </a>
-              <a
+              </button>
+              <button
                 className="px-8 py-4 text-base font-bold bg-white border border-slate-200 text-slate-900 rounded-xl shadow-sm hover:bg-slate-50 transition-all flex items-center gap-2 cursor-pointer"
-                href="#precios"
+                type="button"
+                onClick={() => onCta("cta-ai-hero-video")}
               >
                 <span className="material-symbols-outlined">play_circle</span>
                 Ver cómo funciona
-              </a>
+              </button>
             </div>
           </div>
           <div className="relative group">
@@ -545,11 +546,11 @@ function AiLanding() {
         </div>
       </section>
 
-      <PricingSection />
+      <PricingSection onCta={onCta} />
 
       <FAQSection />
 
-      <ContactSection source="contacto-ai" />
+      <ContactSection source="contacto-ai" onCta={onCta} />
 
       <section className="py-24 bg-white">
         <div className="max-w-5xl mx-auto px-6">
@@ -562,10 +563,8 @@ function AiLanding() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
                 <a
-                  className="px-10 py-5 bg-navy-deep text-white font-bold rounded-2xl shadow-2xl hover:bg-navy-deep/90 transition-all flex items-center justify-center gap-3 cursor-pointer"
-                  href={WHATSAPP_URL}
-                  target="_blank"
-                  rel="noreferrer"
+                className="px-10 py-5 bg-navy-deep text-white font-bold rounded-2xl shadow-2xl hover:bg-navy-deep/90 transition-all flex items-center justify-center gap-3 cursor-pointer"
+                onClick={() => onCta("cta-ai-banner")}
                 >
                   <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-1.557-.594-2.618-1.542-1.06-.948-1.597-1.884-1.741-2.289-.144-.405-.015-.624.114-.753.129-.129.288-.315.405-.441.117-.126.155-.216.234-.351.079-.135.039-.252-.02-.378-.06-.126-.54-1.297-.739-1.774-.194-.465-.394-.402-.54-.41-.139-.007-.3-.008-.459-.008-.16 0-.419.06-.639.3-.219.24-.84.822-.84 2.008s.859 2.333.979 2.494c.121.161 1.69 2.579 4.093 3.619.571.247 1.017.395 1.365.505.574.182 1.097.157 1.511.095.462-.069 1.423-.582 1.623-1.144.2-.563.2-1.044.14-1.144-.06-.099-.219-.155-.459-.275zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.66 1.434 5.174l-1.434 5.234 5.35-1.405c1.472.846 3.18 1.332 5.003 1.332 5.523 0 10-4.477 10-10S17.523 2 12 2z"></path>
@@ -581,7 +580,7 @@ function AiLanding() {
   );
 }
 
-function ClassicLanding() {
+function ClassicLanding({ onCta }: { onCta: (source: string) => void }) {
   return (
     <>
       <section className="relative px-6 py-16 md:px-20 md:py-24">
@@ -602,21 +601,21 @@ function ClassicLanding() {
               Operfoods.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row">
-              <a
+              <button
                 className="inline-flex items-center justify-center rounded-lg bg-primary px-8 py-4 text-base font-bold text-white shadow-xl shadow-primary/30 hover:scale-[1.02] transition-transform cursor-pointer"
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noreferrer"
+                type="button"
+                onClick={() => onCta("cta-classic-hero-acceso")}
               >
                 Solicitar acceso anticipado
-              </a>
-              <a
+              </button>
+              <button
                 className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-slate-200 bg-transparent px-8 py-4 text-base font-bold text-navy-deep hover:bg-slate-50 transition-colors cursor-pointer"
-                href="#precios"
+                type="button"
+                onClick={() => onCta("cta-classic-hero-demo")}
               >
                 <span className="material-symbols-outlined">play_circle</span>
                 Ver demo
-              </a>
+              </button>
             </div>
           </div>
           <div className="relative">
@@ -806,11 +805,11 @@ function ClassicLanding() {
         </div>
       </section>
 
-      <PricingSection />
+      <PricingSection onCta={onCta} />
 
       <FAQSection />
 
-      <ContactSection source="contacto-clasico" />
+      <ContactSection source="contacto-clasico" onCta={onCta} />
 
       <section className="px-6 py-24 md:px-20">
         <div className="mx-auto max-w-5xl overflow-hidden rounded-[2rem] bg-navy-deep p-8 md:p-16 relative">
@@ -913,7 +912,7 @@ function ClassicLanding() {
   );
 }
 
-function PricingSection() {
+function PricingSection({ onCta }: { onCta: (source: string) => void }) {
   return (
     <section className="px-6 py-24 md:px-20 bg-white" id="precios">
       <div className="mx-auto max-w-6xl">
@@ -959,14 +958,13 @@ function PricingSection() {
                   );
                 })}
               </ul>
-              <a
+              <button
                 className="mt-8 w-full inline-flex justify-center rounded-xl border border-primary bg-primary text-white font-bold py-3 shadow-primary/20 shadow-lg hover:bg-primary/90 transition-colors cursor-pointer"
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noreferrer"
+                type="button"
+                onClick={() => onCta(`cta-pricing-${plan.name.toLowerCase().replace(/\s+/g, "-")}`)}
               >
                 Ver todas las funcionalidades
-              </a>
+              </button>
             </div>
           ))}
         </div>
@@ -975,7 +973,7 @@ function PricingSection() {
   );
 }
 
-function ContactSection({ source }: { source: string }) {
+function ContactSection({ source, onCta }: { source: string; onCta: (source: string) => void }) {
   return (
     <section className="px-6 py-16 md:px-20 bg-background-light" id="contacto">
       <div className="mx-auto max-w-5xl grid lg:grid-cols-2 gap-10 items-center">
@@ -985,20 +983,154 @@ function ContactSection({ source }: { source: string }) {
             Déjanos tus datos y agenda una demo. También puedes escribirnos directo por WhatsApp si necesitas una respuesta rápida.
           </p>
           <div className="flex flex-wrap gap-3">
-            <a
+            <button
+              type="button"
               className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-bold text-white shadow-primary/20 shadow-lg hover:bg-primary/90 transition-colors cursor-pointer"
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noreferrer"
+              onClick={() => onCta(`cta-contacto-${source}`)}
             >
               <span className="material-symbols-outlined text-base">chat</span>
               Abrir WhatsApp
-            </a>
+            </button>
           </div>
         </div>
         <ContactForm source={source} />
       </div>
     </section>
+  );
+}
+
+function CTAModal({
+  open,
+  onClose,
+  source,
+}: {
+  open: boolean;
+  onClose: () => void;
+  source: string | null;
+}) {
+  const [status, setStatus] = useState<"idle" | "loading" | "ok" | "error">("idle");
+  const [form, setForm] = useState({ nombre: "", email: "", negocio: "", negocioNombre: "", telefono: "" });
+
+  useEffect(() => {
+    if (open) {
+      setStatus("idle");
+      setForm({ nombre: "", email: "", negocio: "", negocioNombre: "", telefono: "" });
+    }
+  }, [open]);
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setStatus("loading");
+    try {
+      const payload = { ...form, source: source ?? "cta" };
+      const res = await fetch(CTA_WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error("cta_webhook_error");
+      setStatus("ok");
+      setTimeout(onClose, 1200);
+    } catch (error) {
+      console.error("Error enviando CTA", error);
+      setStatus("error");
+    }
+  }
+
+  if (!open) return null;
+
+  return (
+    <div className="fixed inset-0 z-[999] flex items-center justify-center bg-black/40 backdrop-blur-sm px-4">
+      <div className="w-full max-w-lg rounded-2xl bg-white p-6 shadow-2xl border border-slate-200 relative">
+        <button
+          type="button"
+          onClick={onClose}
+          className="absolute right-3 top-3 rounded-full p-2 text-slate-500 hover:bg-slate-100"
+          aria-label="Cerrar"
+        >
+          <span className="material-symbols-outlined">close</span>
+        </button>
+        <div className="mb-4">
+          <p className="text-xs font-bold uppercase tracking-widest text-primary">Agenda tu acceso</p>
+          <h3 className="text-2xl font-black text-navy-deep">Déjanos tus datos y te creamos credenciales</h3>
+          <p className="text-sm text-slate-600 mt-1">Solo pedimos lo esencial para activar tu cuenta.</p>
+        </div>
+        <form className="space-y-4" onSubmit={handleSubmit}>
+          <div>
+            <label className="mb-1 block text-sm font-semibold text-navy-deep">Nombre completo</label>
+            <input
+              required
+              name="nombre"
+              value={form.nombre}
+              onChange={(e) => setForm((f) => ({ ...f, nombre: e.target.value }))}
+              className="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 text-slate-900 focus:border-primary focus:ring-primary"
+              placeholder="Ej: Carla Rodríguez"
+              type="text"
+            />
+          </div>
+          <div>
+            <label className="mb-1 block text-sm font-semibold text-navy-deep">Nombre del negocio</label>
+            <input
+              required
+              name="negocioNombre"
+              value={form.negocioNombre}
+              onChange={(e) => setForm((f) => ({ ...f, negocioNombre: e.target.value }))}
+              className="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 text-slate-900 focus:border-primary focus:ring-primary"
+              placeholder="Ej: Operfoods Truck"
+              type="text"
+            />
+          </div>
+          <div>
+            <label className="mb-1 block text-sm font-semibold text-navy-deep">Email</label>
+            <input
+              required
+              name="email"
+              value={form.email}
+              onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
+              className="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 text-slate-900 focus:border-primary focus:ring-primary"
+              placeholder="correo@tu-negocio.cl"
+              type="email"
+            />
+          </div>
+          <div>
+            <label className="mb-1 block text-sm font-semibold text-navy-deep">Tipo de negocio</label>
+            <input
+              required
+              name="negocio"
+              value={form.negocio}
+              onChange={(e) => setForm((f) => ({ ...f, negocio: e.target.value }))}
+              className="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 text-slate-900 focus:border-primary focus:ring-primary"
+              placeholder="Food truck, local fijo, catering..."
+              type="text"
+            />
+          </div>
+          <div>
+            <label className="mb-1 block text-sm font-semibold text-navy-deep">Teléfono (opcional)</label>
+            <input
+              name="telefono"
+              value={form.telefono}
+              onChange={(e) => setForm((f) => ({ ...f, telefono: e.target.value }))}
+              className="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 text-slate-900 focus:border-primary focus:ring-primary"
+              placeholder="+56 9 1234 5678"
+              type="tel"
+            />
+          </div>
+          <button
+            type="submit"
+            disabled={status === "loading"}
+            className="w-full rounded-xl bg-primary py-3 text-base font-black text-white shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all disabled:opacity-70 cursor-pointer"
+          >
+            {status === "loading" ? "Enviando..." : "Crear mis credenciales"}
+          </button>
+          {status === "ok" && (
+            <p className="text-center text-sm font-semibold text-green-600">¡Listo! Te contactaremos en minutos.</p>
+          )}
+          {status === "error" && (
+            <p className="text-center text-sm font-semibold text-red-600">No se pudo enviar. Intenta de nuevo.</p>
+          )}
+        </form>
+      </div>
+    </div>
   );
 }
 
@@ -1121,6 +1253,10 @@ function ContactForm({ source }: { source: string }) {
 export default function Home() {
   const [mode, setMode] = useState<Mode>("ai");
   const aiEnabled = mode === "ai";
+  const [ctaModal, setCtaModal] = useState<{ open: boolean; source: string | null }>({ open: false, source: null });
+
+  const openCta = (source: string) => setCtaModal({ open: true, source });
+  const closeCta = () => setCtaModal({ open: false, source: null });
 
   // Notificar visita a webhook (se ejecuta solo en cliente)
   useEffect(() => {
@@ -1183,25 +1319,27 @@ export default function Home() {
           </nav>
           <div className="flex items-center gap-3">
             {/*<ModeToggle mode={mode} onChange={setMode} />*/}
-            <a
+            <button
               className="hidden sm:block px-5 py-2.5 text-sm font-semibold text-navy-deep border border-primary/20 rounded-lg hover:bg-primary/5 transition-colors cursor-pointer"
-              href="#precios"
+              type="button"
+              onClick={() => openCta("cta-header-login")}
             >
               Iniciar sesión
-            </a>
-            <a
+            </button>
+            <button
               className="px-6 py-2.5 text-sm font-bold bg-primary text-white rounded-lg shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noreferrer"
+              type="button"
+              onClick={() => openCta(aiEnabled ? "cta-header-demo" : "cta-header-acceso")}
             >
               {aiEnabled ? "Solicitar demo" : "Solicitar acceso"}
-            </a>
+            </button>
           </div>
         </div>
       </header>
 
-      <main>{aiEnabled ? <AiLanding /> : <ClassicLanding />}</main>
+      <main>{aiEnabled ? <AiLanding onCta={openCta} /> : <ClassicLanding onCta={openCta} />}</main>
+
+      <CTAModal open={ctaModal.open} source={ctaModal.source} onClose={closeCta} />
     </div>
   );
 }
