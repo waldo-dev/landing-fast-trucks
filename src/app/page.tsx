@@ -347,7 +347,7 @@ function AiLanding({ onCta }: { onCta: (source: string) => void }) {
               El sistema especializado para negocios móviles que transforma el caos de los eventos en rentabilidad medible.
               Deja de adivinar y comienza a optimizar.
             </p>
-            <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-4">
               <button
                 className="px-8 py-4 text-base font-bold bg-primary text-white rounded-xl shadow-xl shadow-primary/30 hover:translate-y-[-2px] transition-all cursor-pointer"
                 type="button"
@@ -355,15 +355,28 @@ function AiLanding({ onCta }: { onCta: (source: string) => void }) {
               >
                 Solicitar demo gratuita
               </button>
-              <button
-                className="px-8 py-4 text-base font-bold bg-white border border-slate-200 text-slate-900 rounded-xl shadow-sm hover:bg-slate-50 transition-all flex items-center gap-2 cursor-pointer"
-                type="button"
-                onClick={() => onCta("cta-ai-hero-video")}
-              >
-                <span className="material-symbols-outlined">play_circle</span>
-                Ver cómo funciona
-              </button>
+            <a
+              className="px-8 py-4 text-base font-bold bg-white border border-slate-200 text-slate-900 rounded-xl shadow-sm hover:bg-slate-50 transition-all flex items-center gap-2 cursor-pointer"
+              href="#precios"
+            >
+              <span className="material-symbols-outlined">payments</span>
+              Ver planes
+            </a>
             </div>
+          <ul className="flex flex-wrap gap-3 text-sm text-slate-700">
+            <li className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary font-semibold">
+              <span className="material-symbols-outlined text-base">event_available</span>
+              Ventas por evento
+            </li>
+            <li className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary font-semibold">
+              <span className="material-symbols-outlined text-base">inventory_2</span>
+              Inventario y recetas
+            </li>
+            <li className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary font-semibold">
+              <span className="material-symbols-outlined text-base">insights</span>
+              Dash en tiempo real
+            </li>
+          </ul>
           </div>
           <div className="relative group">
             <div className="absolute -inset-4 bg-primary/20 rounded-3xl blur-3xl group-hover:bg-primary/30 transition-all duration-500"></div>
@@ -381,6 +394,8 @@ function AiLanding({ onCta }: { onCta: (source: string) => void }) {
           </div>
         </div>
       </section>
+
+      <PricingSection onCta={onCta} />
 
       <section className="py-24 bg-white border-y border-slate-100" id="problemas">
         <div className="max-w-7xl mx-auto px-6">
@@ -546,8 +561,6 @@ function AiLanding({ onCta }: { onCta: (source: string) => void }) {
         </div>
       </section>
 
-      <PricingSection onCta={onCta} />
-
       <FAQSection />
 
       <ContactSection source="contacto-ai" onCta={onCta} />
@@ -608,14 +621,27 @@ function ClassicLanding({ onCta }: { onCta: (source: string) => void }) {
               >
                 Solicitar acceso anticipado
               </button>
-              <button
+              <a
                 className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-slate-200 bg-transparent px-8 py-4 text-base font-bold text-navy-deep hover:bg-slate-50 transition-colors cursor-pointer"
-                type="button"
-                onClick={() => onCta("cta-classic-hero-demo")}
+                href="#precios"
               >
-                <span className="material-symbols-outlined">play_circle</span>
-                Ver demo
-              </button>
+                <span className="material-symbols-outlined">payments</span>
+                Ver planes
+              </a>
+            </div>
+            <div className="flex flex-wrap gap-2 text-sm text-slate-700">
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary font-semibold">
+                <span className="material-symbols-outlined text-base">event_available</span>
+                Ventas por evento
+              </span>
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary font-semibold">
+                <span className="material-symbols-outlined text-base">inventory_2</span>
+                Inventario y stock
+              </span>
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary font-semibold">
+                <span className="material-symbols-outlined text-base">insights</span>
+                Reportes al instante
+              </span>
             </div>
           </div>
           <div className="relative">
@@ -644,6 +670,8 @@ function ClassicLanding({ onCta }: { onCta: (source: string) => void }) {
           </div>
         </div>
       </section>
+
+      <PricingSection onCta={onCta} />
 
       <section className="bg-slate-50 px-6 py-20 md:px-20" id="problemas">
         <div className="mx-auto max-w-7xl">
@@ -804,8 +832,6 @@ function ClassicLanding({ onCta }: { onCta: (source: string) => void }) {
           </div>
         </div>
       </section>
-
-      <PricingSection onCta={onCta} />
 
       <FAQSection />
 
@@ -1094,15 +1120,20 @@ function CTAModal({
           </div>
           <div>
             <label className="mb-1 block text-sm font-semibold text-navy-deep">Tipo de negocio</label>
-            <input
+            <select
               required
               name="negocio"
               value={form.negocio}
               onChange={(e) => setForm((f) => ({ ...f, negocio: e.target.value }))}
               className="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 text-slate-900 focus:border-primary focus:ring-primary"
-              placeholder="Food truck, local fijo, catering..."
-              type="text"
-            />
+            >
+              <option value="">Selecciona una opción</option>
+              <option value="Food truck">Food truck</option>
+              <option value="Local establecido">Local establecido</option>
+              <option value="Eventos / catering">Eventos / catering</option>
+              <option value="Dark kitchen">Dark kitchen</option>
+              <option value="Otro">Otro</option>
+            </select>
           </div>
           <div>
             <label className="mb-1 block text-sm font-semibold text-navy-deep">Teléfono (opcional)</label>
