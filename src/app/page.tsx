@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Head from "next/head";
 import { useEffect, useState } from "react";
 
 type Mode = "ai" | "clasico";
@@ -1328,6 +1329,45 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background-light text-slate-900 font-display">
+      <Head>
+        <title>Software para Food Trucks, Locales y Dark Kitchen | Operfoods</title>
+        <meta
+          name="description"
+          content="POS, inventario y reportes en tiempo real para food trucks, locales establecidos y dark kitchens. Ventas por evento, recetas, stock y márgenes claros."
+        />
+        <meta
+          name="keywords"
+          content="software food truck, pos food truck, sistema para locales establecidos, software dark kitchen, inventario gastronomía, ventas por evento, POS movil, reportes en tiempo real"
+        />
+        <meta property="og:title" content="Operfoods | POS, Inventario y Reportes para Food Trucks y Dark Kitchens" />
+        <meta
+          property="og:description"
+          content="Controla ventas, stock y márgenes en ferias, locales y dark kitchens. Integraciones de pago, recetas e insights en tiempo real."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/fast-trucks.firebasestorage.app/o/dashboard.jpeg?alt=media&token=c124bd54-e9fd-419d-b54e-fed27f67b0c7" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              name: "Operfoods",
+              applicationCategory: "BusinessApplication",
+              operatingSystem: "Web",
+              description:
+                "POS, inventario y reportes en tiempo real para food trucks, locales establecidos y dark kitchens.",
+              offers: {
+                "@type": "Offer",
+                priceCurrency: "CLP",
+                price: "22500",
+                category: "Subscription",
+              },
+            }),
+          }}
+        />
+      </Head>
       <header className="sticky top-0 z-50 w-full bg-background-light/80 backdrop-blur-md border-b border-primary/10 px-6 md:px-10">
         <div className="max-w-7xl mx-auto h-20 flex items-center justify-between">
           <div className="flex items-center gap-2">
