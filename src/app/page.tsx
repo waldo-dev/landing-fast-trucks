@@ -1332,7 +1332,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto h-20 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Image
-              src="/logo-operfoods-1.svg"
+              src="/Logo-operfoods-1.svg"
               alt="Logotipo"
               width={80}
               height={80}
