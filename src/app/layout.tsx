@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/logo-operfoods.ico",
   },
 };
 
