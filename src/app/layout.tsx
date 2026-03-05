@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   icons: {
-    icon: "/favicon2.ico",
+    icon: "/favicon1.ico",
   },
 };
 
