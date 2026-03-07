@@ -563,11 +563,15 @@ function AiLanding({ onCta }: { onCta: (source: string) => void }) {
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-12 md:grid-cols-5">
             <div className="md:col-span-2">
-              <div className="mb-6 flex items-center gap-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded bg-primary text-white">
-                  <span className="material-symbols-outlined text-sm">local_shipping</span>
-                </div>
-                <span className="text-lg font-black tracking-tight text-navy-deep">Operfoods</span>
+              <div className="mb-6 flex items-center gap-3">
+                <Image
+                  src="/Logo-operfoods-1.svg"
+                  alt="Operfoods"
+                  width={120}
+                  height={120}
+                  className="h-16 w-16 md:h-20 md:w-20"
+                  priority
+                />
               </div>
               <p className="max-w-xs text-sm text-slate-500">
                 Optimizando la rentabilidad de la gastronomía móvil en Chile con tecnología de vanguardia.
@@ -930,9 +934,7 @@ function ClassicLanding({ onCta }: { onCta: (source: string) => void }) {
           <div className="grid gap-12 md:grid-cols-5">
             <div className="md:col-span-2">
               <div className="mb-6 flex items-center gap-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded bg-primary text-white">
-                  <span className="material-symbols-outlined text-sm">local_shipping</span>
-                </div>
+                <Image src="/Logo-operfoods-1.svg" alt="Operfoods" width={40} height={40} className="h-10 w-10" />
                 <span className="text-lg font-black tracking-tight text-navy-deep">Operfoods</span>
               </div>
               <p className="max-w-xs text-sm text-slate-500">
