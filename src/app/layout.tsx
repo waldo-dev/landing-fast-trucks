@@ -9,6 +9,7 @@ const workSans = Work_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://operfoods.com"),
   title: "Software POS para food trucks y eventos | Control de ventas en terreno",
   description:
     "Plataforma POS para food trucks, ferias y locales móviles: ventas por evento, inventario, recetas, reportes en tiempo real y múltiples cajas.",
@@ -29,6 +30,7 @@ export const metadata: Metadata = {
     description:
       "Gestiona ventas por evento, inventario, recetas y reportes en tiempo real. Ideal para food trucks, ferias y locales móviles.",
     type: "website",
+    url: "https://operfoods.com",
   },
   twitter: {
     card: "summary_large_image",
@@ -37,7 +39,7 @@ export const metadata: Metadata = {
       "Punto de venta con ventas por evento, inventario, recetas y dashboards para negocios gastronómicos móviles.",
   },
   alternates: {
-    canonical: "/",
+    canonical: "https://operfoods.com",
   },
   icons: {
     icon: "/favicon1.ico",
