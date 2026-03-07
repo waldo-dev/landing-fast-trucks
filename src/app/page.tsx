@@ -328,7 +328,7 @@ function AiLanding({ onCta }: { onCta: (source: string) => void }) {
   return (
     <>
       <section className="relative pt-16 pb-24 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-[1fr_1.5fr] gap-12 items-center">
           <div className="flex flex-col gap-8">
             <div
               className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider w-fit ${heroBadge.tone}`}
@@ -363,6 +363,10 @@ function AiLanding({ onCta }: { onCta: (source: string) => void }) {
               Ver planes
             </a>
             </div>
+          <div className="flex items-center gap-2 text-sm font-semibold text-primary">
+            <span className="material-symbols-outlined text-base">redeem</span>
+            Prueba gratuita de 30 días incluida en tu demo
+          </div>
           <ul className="flex flex-wrap gap-3 text-sm text-slate-700">
             <li className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary font-semibold">
               <span className="material-symbols-outlined text-base">event_available</span>
@@ -378,7 +382,7 @@ function AiLanding({ onCta }: { onCta: (source: string) => void }) {
             </li>
           </ul>
           </div>
-          <div className="relative group">
+          <div className="relative group lg:scale-110 lg:translate-x-4 transition-transform">
             <div className="absolute -inset-4 bg-primary/20 rounded-3xl blur-3xl group-hover:bg-primary/30 transition-all duration-500"></div>
             <div className="relative bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden">
               <Image
@@ -454,41 +458,6 @@ function AiLanding({ onCta }: { onCta: (source: string) => void }) {
                 ))}
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-24 bg-navy-deep text-white overflow-hidden relative" id="ai">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2"></div>
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="flex flex-col items-center text-center mb-16">
-            <div className="flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full border border-primary/50 bg-primary/10 backdrop-blur-sm">
-              <span className="material-symbols-outlined text-primary text-sm">smart_toy</span>
-              <span className="text-xs font-bold tracking-widest uppercase">Operfoods</span>
-            </div>
-            {/*<h2 className="text-4xl font-bold mb-6">Inteligencia Predictiva para tu Negocio</h2>
-            <p className="text-slate-400 max-w-2xl">
-              Nuestra IA analiza miles de puntos de datos para decirte exactamente dónde y cuándo vender para maximizar tus utilidades.
-            </p>*/}
-            <div>
-              <h2 className="text-3xl font-bold text-white mb-4">Una solución diseñada para la velocidad del terreno</h2>
-              <p className="text-slate-200">Gestiona múltiples puntos de venta de forma centralizada y en tiempo real.</p>
-            </div>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {aiSolutionFeatures.map((item) => (
-              <div
-                key={item.title}
-                className="p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 transition-all group"
-              >
-                <span className="material-symbols-outlined text-primary text-3xl mb-4 group-hover:scale-110 transition-transform">
-                  {item.icon}
-                </span>
-                <h3 className="font-bold text-xl mb-3">{item.title}</h3>
-                <p className="text-slate-400 text-sm">{item.text}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -589,6 +558,88 @@ function AiLanding({ onCta }: { onCta: (source: string) => void }) {
           </div>
         </div>
       </section>
+
+      <footer className="border-t border-slate-200 bg-white px-6 py-12 md:px-20">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-12 md:grid-cols-5">
+            <div className="md:col-span-2">
+              <div className="mb-6 flex items-center gap-2">
+                <div className="flex h-8 w-8 items-center justify-center rounded bg-primary text-white">
+                  <span className="material-symbols-outlined text-sm">local_shipping</span>
+                </div>
+                <span className="text-lg font-black tracking-tight text-navy-deep">Operfoods</span>
+              </div>
+              <p className="max-w-xs text-sm text-slate-500">
+                Optimizando la rentabilidad de la gastronomía móvil en Chile con tecnología de vanguardia.
+              </p>
+            </div>
+            <div>
+              <h5 className="mb-4 font-bold text-navy-deep">Producto</h5>
+              <ul className="space-y-2 text-sm text-slate-500">
+                <li>
+                  <a className="hover:text-primary" href="#">
+                    Características
+                  </a>
+                </li>
+                <li>
+                  <a className="hover:text-primary" href="#precios">
+                    Precios
+                  </a>
+                </li>
+                <li>
+                  <a className="hover:text-primary" href="#">
+                    Integraciones
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h5 className="mb-4 font-bold text-navy-deep">Compañía</h5>
+              <ul className="space-y-2 text-sm text-slate-500">
+                <li>
+                  <a className="hover:text-primary" href="#">
+                    Sobre nosotros
+                  </a>
+                </li>
+                <li>
+                  <a className="hover:text-primary" href="#">
+                    Soporte
+                  </a>
+                </li>
+                <li>
+                  <a className="hover:text-primary" href="#">
+                    Privacidad
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h5 className="mb-4 font-bold text-navy-deep">Redes</h5>
+              <ul className="space-y-2 text-sm text-slate-500">
+                <li>
+                  <a className="hover:text-primary" href="https://www.instagram.com/operfoods" target="_blank" rel="noopener noreferrer">
+                    Instagram
+                  </a>
+                </li>
+                <li>
+                  <a className="hover:text-primary" href="https://www.linkedin.com/company/operfoods" target="_blank" rel="noopener noreferrer">
+                    LinkedIn
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="mt-12 border-t border-slate-100 pt-8 text-center text-xs text-slate-400 space-y-1">
+            <div>© 2026 Chilsmart. Todos los derechos reservados.</div>
+            <div className="text-[11px]">
+              Creado por{" "}
+              <a className="text-primary hover:underline" href="https://chilsmart.com" target="_blank" rel="noopener noreferrer">
+                Chilsmart
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
     </>
   );
 }
@@ -876,7 +927,7 @@ function ClassicLanding({ onCta }: { onCta: (source: string) => void }) {
 
       <footer className="border-t border-slate-200 bg-white px-6 py-12 md:px-20">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-12 md:grid-cols-4">
+          <div className="grid gap-12 md:grid-cols-5">
             <div className="md:col-span-2">
               <div className="mb-6 flex items-center gap-2">
                 <div className="flex h-8 w-8 items-center justify-center rounded bg-primary text-white">
@@ -928,9 +979,35 @@ function ClassicLanding({ onCta }: { onCta: (source: string) => void }) {
                 </li>
               </ul>
             </div>
+            <div>
+              <h5 className="mb-4 font-bold text-navy-deep">Redes</h5>
+              <ul className="space-y-2 text-sm text-slate-500">
+                <li>
+                  <a className="hover:text-primary" href="https://www.instagram.com/operfoods" target="_blank" rel="noopener noreferrer">
+                    Instagram
+                  </a>
+                </li>
+                <li>
+                  <a className="hover:text-primary" href="https://www.linkedin.com/company/operfoods" target="_blank" rel="noopener noreferrer">
+                    LinkedIn
+                  </a>
+                </li>
+                <li>
+                  <a className="hover:text-primary" href="https://www.youtube.com/@operfoods" target="_blank" rel="noopener noreferrer">
+                    YouTube
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div className="mt-12 border-t border-slate-100 pt-8 text-center text-xs text-slate-400">
-            © 2026 Chilsmart. Todos los derechos reservados.
+          <div className="mt-12 border-t border-slate-100 pt-8 text-center text-xs text-slate-400 space-y-1">
+            <div>© 2026 Chilsmart. Todos los derechos reservados.</div>
+            <div className="text-[11px]">
+              Creado por{" "}
+              <a className="text-primary hover:underline" href="https://chilsmart.com" target="_blank" rel="noopener noreferrer">
+                Chilsmart
+              </a>
+            </div>
           </div>
         </div>
       </footer>
@@ -989,7 +1066,7 @@ function PricingSection({ onCta }: { onCta: (source: string) => void }) {
                 type="button"
                 onClick={() => onCta(`cta-pricing-${plan.name.toLowerCase().replace(/\s+/g, "-")}`)}
               >
-                Ver todas las funcionalidades
+                Solicitar Demo Gratis
               </button>
             </div>
           ))}
