@@ -10,47 +10,47 @@ const CTA_WEBHOOK_URL = "https://n8n.chilsmart.com/webhook/operfoods-contact";
 
 const aiProblems = [
   {
-    icon: "trending_down",
-    title: "Incertidumbre de ganancias",
-    text: "¿Realmente ganaste dinero hoy o solo moviste caja? El flujo de efectivo no siempre es utilidad.",
-  },
-  {
-    icon: "account_balance_wallet",
-    title: "Mezcla de ventas local/eventos",
-    text: "Separa tus ingresos del local fijo de tus activaciones externas de forma automática.",
+    icon: "edit",
+    title: "Cuadernos y notas",
+    text: "Al cerrar el evento no sabes con certeza cuánto dinero ganaste realmente.",
   },
   {
     icon: "calculate",
-    title: "Falta de rentabilidad clara",
-    text: "Cálculo automático de costos operativos y margen real por cada feria o festival.",
+    title: "Cálculos mentales",
+    text: "Es fácil olvidar ventas, costos o mermas y terminar decidiendo a ciegas.",
   },
   {
     icon: "inventory_2",
-    title: "Caos de inventario",
-    text: "Control preciso de insumos antes, durante y después del evento para evitar mermas.",
+    title: "Inventario incierto",
+    text: "No sabes qué insumos se usaron ni si llevaste demasiado stock.",
+  },
+  {
+    icon: "report_problem",
+    title: "Eventos dudosos",
+    text: "No puedes saber rápido si el evento valió la pena o qué producto vender más.",
   },
 ];
 
 const aiSolutionFeatures = [
   {
-    icon: "print",
-    title: "Órdenes rápidas e impresión",
-    text: "Interfaz optimizada para alta rotación y conexión con impresoras Bluetooth para tickets.",
+    icon: "bolt",
+    title: "Registrar ventas en segundos",
+    text: "Captura cada venta desde el celular y etiqueta el evento automáticamente.",
   },
   {
-    icon: "event_available",
-    title: "Asociación de ventas a eventos",
-    text: "Cada transacción se etiqueta automáticamente al evento activo para reportes precisos.",
+    icon: "inventory",
+    title: "Controlar inventario",
+    text: "Sabe exactamente qué insumos usaste y cuánto stock te queda.",
   },
   {
-    icon: "bar_chart",
-    title: "Reportes por evento",
-    text: "Analiza el rendimiento individual de cada ubicación y compara resultados históricos.",
+    icon: "payments",
+    title: "Ver ganancias por evento",
+    text: "Muestra ingresos, costos y margen real sin hojas de cálculo.",
   },
   {
     icon: "insights",
-    title: "Control de rentabilidad en tiempo real",
-    text: "Visualiza ingresos, costos estimados y márgenes por evento para tomar decisiones estratégicas al instante.",
+    title: "Analizar eventos",
+    text: "Identifica qué eventos repetir y qué productos empujar para ganar más.",
   },
 ];
 
@@ -231,27 +231,25 @@ const faqItems = [
 
 const pricingPlans = [
   {
-    name: "Plan Inicial",
+    name: "Básico",
     price: "$ 22.500 /mes",
-    tagline: "Impulsa tu negocio con las herramientas esenciales.",
+    tagline: "Incluye registro de ventas, inventario y análisis por evento.",
     features: [
       "Punto de venta rápido para ferias y local fijo",
       "Arqueos y movimientos de caja en cada turno",
       "Impresión de comandas (Bluetooth)",
       "Descuentos y combos configurables",
-      "Carta QR siempre actualizada",
     ],
   },
   {
-    name: "Plan Avanzado",
+    name: "Estándar",
     price: "$ 32.500 /mes",
-    tagline: "Profesionaliza tu gestión, analiza y toma decisiones sobre tu negocio.",
+    tagline: "Ideal para operar varios eventos y ver ganancias reales.",
     features: [
       "Punto de venta rápido para ferias y local fijo",
       "Arqueos y movimientos de caja en cada turno",
       "Impresión de comandas (Bluetooth)",
       "Descuentos y combos configurables",
-      "Carta QR siempre actualizada",
       "Inventario básico por insumo y alertas de stock",
       "Costeo de recetas y margen por producto",
       "Gestión de clientes y proveedores",
@@ -260,15 +258,14 @@ const pricingPlans = [
     highlight: true,
   },
   {
-    name: "Plan Pro",
+    name: "Pro",
     price: "$ 50.000 /mes",
-    tagline: "Controla cada detalle con herramientas avanzadas.",
+    tagline: "Control total con múltiples cajas, listas por canal y trazabilidad.",
     features: [
       "Punto de venta rápido para ferias y local fijo",
       "Arqueos y movimientos de caja en cada turno",
       "Impresión de comandas (Bluetooth)",
       "Descuentos y combos configurables",
-      "Carta QR siempre actualizada",
       "Inventario básico por insumo y alertas de stock",
       "Costeo de recetas y margen por producto",
       "Gestión de clientes y proveedores",
@@ -316,7 +313,7 @@ function ModeToggle({
 
 function AiLanding({ onCta }: { onCta: (source: string) => void }) {
   const heroBadge = {
-    text: "Proximamente: Módulo Operfoods AI",
+    text: "Próximamente: descubre nuevos eventos para tu foodtruck",
     tone: "text-primary bg-primary/10",
   };
 
@@ -340,20 +337,33 @@ function AiLanding({ onCta }: { onCta: (source: string) => void }) {
               {heroBadge.text}
             </div>
             <h1 className="text-5xl md:text-6xl font-black leading-[1.1] tracking-tight text-slate-900">
-              Controla tus ventas en ferias y eventos para tomar{" "}
-              <span className="text-primary">decisiones inteligentes</span> con datos reales.
+              ¿Sabes realmente <span className="text-primary">cuánto ganas</span> en cada evento?
             </h1>
             <p className="text-lg text-slate-600 leading-relaxed max-w-xl">
-              El sistema especializado para negocios móviles que transforma el caos de los eventos en rentabilidad medible.
-              Deja de adivinar y comienza a optimizar.
+              Muchos foodtrucks venden todo el día, pero al final no saben si el evento valió la pena. Operfoods te muestra
+              las ganancias reales por evento y te ayuda a decidir con datos.
             </p>
+          <ul className="space-y-2 text-sm text-slate-700">
+            <li className="flex items-center gap-2">
+              <span className="material-symbols-outlined text-primary text-base">bolt</span>
+              Registrar ventas del evento en segundos
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="material-symbols-outlined text-primary text-base">inventory_2</span>
+              Controlar tu inventario sin excels
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="material-symbols-outlined text-primary text-base">paid</span>
+              Ver exactamente cuánto ganaste
+            </li>
+          </ul>
           <div className="flex flex-wrap gap-4">
               <button
                 className="px-8 py-4 text-base font-bold bg-primary text-white rounded-xl shadow-xl shadow-primary/30 hover:translate-y-[-2px] transition-all cursor-pointer"
                 type="button"
                 onClick={() => onCta("cta-ai-hero-demo")}
               >
-                Solicitar demo gratuita
+                Probar Operfoods · 30 días gratis
               </button>
             <a
               className="px-8 py-4 text-base font-bold bg-white border border-slate-200 text-slate-900 rounded-xl shadow-sm hover:bg-slate-50 transition-all flex items-center gap-2 cursor-pointer"
@@ -365,7 +375,11 @@ function AiLanding({ onCta }: { onCta: (source: string) => void }) {
             </div>
           <div className="flex items-center gap-2 text-sm font-semibold text-primary">
             <span className="material-symbols-outlined text-base">redeem</span>
-            Prueba gratuita de 30 días incluida en tu demo
+            Prueba gratuita de 30 días incluida.
+          </div>
+          <div className="flex items-center gap-2 text-xs text-slate-500">
+            <span className="material-symbols-outlined text-base">verified_user</span>
+            Creado por un desarrollador cuyo hermano vende en eventos gastronómicos.
           </div>
           <ul className="flex flex-wrap gap-3 text-sm text-slate-700">
             <li className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary font-semibold">
@@ -404,9 +418,10 @@ function AiLanding({ onCta }: { onCta: (source: string) => void }) {
       <section className="py-24 bg-white border-y border-slate-100" id="problemas">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Supera los desafíos de la venta en terreno</h2>
+            <h2 className="text-3xl font-bold text-slate-900 mb-4">Muchos foodtrucks aún usan cuadernos y cálculos mentales</h2>
             <p className="text-slate-600 max-w-2xl mx-auto">
-              Identifica y resuelve las fugas de dinero que están afectando tu crecimiento actual.
+              Después del evento es difícil saber cuánto ganaste, qué producto se vendió más o cuánto inventario se usó.
+              Operfoods te muestra los números reales de tu negocio.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -441,8 +456,8 @@ function AiLanding({ onCta }: { onCta: (source: string) => void }) {
             </div>
             <div className="order-1 lg:order-2 flex flex-col gap-10">
               <div>
-                <h2 className="text-3xl font-bold text-slate-900 mb-4">Una solución diseñada para la velocidad del terreno</h2>
-                <p className="text-slate-600">Gestiona múltiples puntos de venta de forma centralizada y en tiempo real.</p>
+                <h2 className="text-3xl font-bold text-slate-900 mb-4">Operfoods te muestra cuánto ganas en cada evento</h2>
+                <p className="text-slate-600">Registra ventas, controla inventario y ve tu ganancia real sin hojas de cálculo.</p>
               </div>
               <div className="space-y-6">
                 {aiSolutionFeatures.map((item) => (
@@ -457,6 +472,146 @@ function AiLanding({ onCta }: { onCta: (source: string) => void }) {
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-white border-t border-slate-100" id="beneficio">
+        <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
+          <div className="space-y-6">
+            <p className="text-sm font-bold uppercase tracking-[0.15em] text-primary">Beneficio económico</p>
+            <h2 className="text-3xl font-bold text-slate-900 leading-tight">Un foodtruck puede perder dinero sin notarlo</h2>
+            <p className="text-slate-600">
+              Llevar demasiado inventario, vender productos poco rentables o ir a eventos equivocados te come el margen. Operfoods te
+              ayuda a optimizar stock, identificar los mejores eventos y mejorar tus ganancias por jornada.
+            </p>
+            <ul className="space-y-3 text-sm text-slate-700">
+              <li className="flex items-start gap-2">
+                <span className="material-symbols-outlined text-primary mt-[2px]">check_circle</span>
+                Optimiza inventario antes y durante el evento.
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="material-symbols-outlined text-primary mt-[2px]">check_circle</span>
+                Identifica qué eventos repetir y cuáles evitar.
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="material-symbols-outlined text-primary mt-[2px]">check_circle</span>
+                Empuja productos más rentables con datos, no con intuición.
+              </li>
+            </ul>
+          </div>
+          <div className="rounded-2xl bg-background-light border border-slate-200 p-6 shadow-sm">
+            <div className="flex items-center justify-between mb-4">
+              <div>
+                <p className="text-xs font-bold uppercase text-primary">Ejemplo de evento</p>
+                <h4 className="text-xl font-black text-slate-900">Feria Plaza Puente Alto</h4>
+              </div>
+              <span className="inline-flex items-center gap-1 rounded-full bg-green-100 px-3 py-1 text-[11px] font-bold text-green-700">
+                <span className="material-symbols-outlined text-base">done_all</span>
+                Rentable
+              </span>
+            </div>
+            <div className="space-y-3 text-sm text-slate-700">
+              <div className="flex items-center justify-between p-3 rounded-lg bg-white border border-slate-100">
+                <span className="font-semibold text-slate-500">Ventas</span>
+                <span className="text-lg font-black text-slate-900">$480.000</span>
+              </div>
+              <div className="flex items-center justify-between p-3 rounded-lg bg-white border border-slate-100">
+                <span className="font-semibold text-slate-500">Costos</span>
+                <span className="text-lg font-black text-slate-900">$210.000</span>
+              </div>
+              <div className="flex items-center justify-between p-3 rounded-lg bg-primary/10 border border-primary/30">
+                <span className="font-semibold text-primary">Ganancia real</span>
+                <span className="text-2xl font-black text-primary">$270.000</span>
+              </div>
+              <p className="text-xs text-slate-500">
+                Este cálculo es automático: se basa en ventas, costos y uso de inventario. No necesitas un Excel.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-background-light" id="comparativa">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-slate-900">Olvida el cuaderno y el POS genérico</h2>
+            <p className="text-slate-600">Compara tu forma actual de operar con una herramienta hecha para eventos.</p>
+          </div>
+          <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+            <div className="grid grid-cols-4 text-xs font-bold uppercase text-slate-400 bg-slate-50 px-4 py-3">
+              <span>Método</span>
+              <span className="text-center">Problema</span>
+              <span className="text-center">¿Muestra ganancias?</span>
+              <span className="text-center text-primary">Operfoods</span>
+            </div>
+            {[
+              { metodo: "Cuaderno", problema: "No sabes ganancias reales", check: false },
+              { metodo: "Excel", problema: "Difícil de usar en eventos", check: false },
+              { metodo: "POS genérico", problema: "Solo sirve para cobrar", check: false },
+              { metodo: "Operfoods", problema: "Muestra cuánto ganas por evento", check: true },
+            ].map((row) => (
+              <div key={row.metodo} className="grid grid-cols-4 px-4 py-4 border-t border-slate-100 items-center text-sm">
+                <div className="font-bold text-slate-900 flex items-center gap-2">
+                  <span className="material-symbols-outlined text-base text-primary">payments</span>
+                  {row.metodo}
+                </div>
+                <div className="text-center text-slate-600">{row.problema}</div>
+                <div className="text-center">
+                  {row.check ? (
+                    <span className="material-symbols-outlined text-green-500">check</span>
+                  ) : (
+                    <span className="material-symbols-outlined text-slate-300">close</span>
+                  )}
+                </div>
+                <div className="text-center">
+                  {row.check ? (
+                    <span className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-3 py-1 text-[11px] font-bold text-primary">
+                      Sí, por evento
+                    </span>
+                  ) : (
+                    <span className="text-xs text-slate-400">No</span>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-white" id="foodtrucks">
+        <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+          <div className="space-y-4">
+            <p className="text-sm font-bold uppercase tracking-[0.15em] text-primary">Hecho para foodtrucks</p>
+            <h2 className="text-3xl font-bold text-slate-900">Diseñado para vender en terreno</h2>
+            <p className="text-slate-600">
+              Operfoods nació trabajando con foodtrucks en ferias, festivales y food parks. Es simple, móvil y listo para operar
+              desde el celular.
+            </p>
+            <ul className="space-y-3 text-sm text-slate-700">
+              {["Ferias gastronómicas", "Festivales", "Eventos privados", "Food parks"].map((item) => (
+                <li key={item} className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-primary text-base">local_activity</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <div className="inline-flex items-center gap-2 text-xs text-slate-500">
+              <span className="material-symbols-outlined text-base">smartphone</span>
+              Optimizado para uso en celular y venta rápida.
+            </div>
+          </div>
+          <div className="relative">
+            <div className="absolute -inset-6 bg-primary/10 rounded-3xl blur-3xl"></div>
+            <div className="relative rounded-2xl border border-slate-200 shadow-2xl overflow-hidden">
+              <Image
+                alt="Operfoods en celular"
+                src="https://firebasestorage.googleapis.com/v0/b/fast-trucks.firebasestorage.app/o/operfoods-celular-cortado.jpeg?alt=media&token=842eddfb-fe37-4ea8-aa42-71dd3af75f9c"
+                width={1200}
+                height={1400}
+                className="w-full h-auto"
+              />
             </div>
           </div>
         </div>
@@ -539,9 +694,9 @@ function AiLanding({ onCta }: { onCta: (source: string) => void }) {
           <div className="bg-primary rounded-[2.5rem] p-12 text-center text-white relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-black/20 to-transparent"></div>
             <div className="relative z-10 flex flex-col items-center gap-8">
-              <h2 className="text-4xl md:text-5xl font-black leading-tight">Descubre qué eventos realmente te generan utilidades</h2>
+              <h2 className="text-4xl md:text-5xl font-black leading-tight">Empieza a entender realmente tu negocio</h2>
               <p className="text-lg opacity-90 max-w-2xl">
-                Únete a cientos de emprendedores que ya están profesionalizando su operación con Operfoods.
+                Prueba Operfoods gratis por 30 días y ve de inmediato cuánto ganas en cada evento.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
                 <a
@@ -551,7 +706,7 @@ function AiLanding({ onCta }: { onCta: (source: string) => void }) {
                   <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-1.557-.594-2.618-1.542-1.06-.948-1.597-1.884-1.741-2.289-.144-.405-.015-.624.114-.753.129-.129.288-.315.405-.441.117-.126.155-.216.234-.351.079-.135.039-.252-.02-.378-.06-.126-.54-1.297-.739-1.774-.194-.465-.394-.402-.54-.41-.139-.007-.3-.008-.459-.008-.16 0-.419.06-.639.3-.219.24-.84.822-.84 2.008s.859 2.333.979 2.494c.121.161 1.69 2.579 4.093 3.619.571.247 1.017.395 1.365.505.574.182 1.097.157 1.511.095.462-.069 1.423-.582 1.623-1.144.2-.563.2-1.044.14-1.144-.06-.099-.219-.155-.459-.275zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.66 1.434 5.174l-1.434 5.234 5.35-1.405c1.472.846 3.18 1.332 5.003 1.332 5.523 0 10-4.477 10-10S17.523 2 12 2z"></path>
                   </svg>
-                  Hablar por WhatsApp
+                  Crear cuenta ahora
                 </a>
               </div>
             </div>
@@ -1068,7 +1223,7 @@ function PricingSection({ onCta }: { onCta: (source: string) => void }) {
                 type="button"
                 onClick={() => onCta(`cta-pricing-${plan.name.toLowerCase().replace(/\s+/g, "-")}`)}
               >
-                Solicitar Demo Gratis
+                Probar 30 días gratis
               </button>
             </div>
           ))}
@@ -1389,7 +1544,9 @@ export default function Home() {
     ? [
         { href: "#problemas", label: "Problemas" },
         { href: "#solucion", label: "Solución" },
-        { href: "#ai", label: "Operfoods AI" },
+        { href: "#beneficio", label: "Beneficio" },
+        { href: "#comparativa", label: "Comparativa" },
+        { href: "#foodtrucks", label: "Foodtrucks" },
         { href: "#proceso", label: "Cómo funciona" },
         { href: "#precios", label: "Precios" },
         { href: "#contacto", label: "Contacto" },

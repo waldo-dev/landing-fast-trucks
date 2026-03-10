@@ -8,9 +8,9 @@
   --color-primary: #f27f0d;
   --color-background-light: #f8f7f5;
   --color-background-dark: #1a140e;
-  --color-navy-deep: #0f172a;
-  --font-sans: var(--font-work-sans);
-  --font-display: var(--font-work-sans);
+  --color-navy-deep: #0f172b;
+  --font-sans: "Along Sans", var(--font-work-sans), system-ui, -apple-system, sans-serif;
+  --font-display: "Along Sans", var(--font-work-sans), system-ui, -apple-system, sans-serif;
   --radius-default: 0.25rem;
   --radius-lg: 0.5rem;
   --radius-xl: 0.75rem;
@@ -19,8 +19,8 @@
 
 body {
   background: var(--color-background-light);
-  color: #0f172a;
-  font-family: var(--font-work-sans), system-ui, -apple-system, sans-serif;
+  color: #0f172b;
+  font-family: var(--font-sans);
   line-height: 1.6;
 }
 
