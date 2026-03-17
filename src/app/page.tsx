@@ -1393,12 +1393,12 @@ function CTAModal({
             <label className="mb-1 block text-sm font-semibold text-navy-deep">Contraseña</label>
             <input
               required
-              name="password"
+              name="pass"
               value={form.pass}
               onChange={(e) => setForm((f) => ({ ...f, pass: e.target.value }))}
               className="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 text-slate-900 focus:border-primary focus:ring-primary"
               placeholder="Crea una contraseña segura"
-              type="pass"
+              type="password"
             />
           </div>
           <div>
