@@ -6,7 +6,9 @@ import { useEffect, useState } from "react";
 type Mode = "ai" | "clasico";
 
 const WEBHOOK_URL = "https://n8n.chilsmart.com/webhook-test/TAIGA";
-const CTA_WEBHOOK_URL = "https://n8n.chilsmart.com/webhook/operfoods-contact";
+const CTA_WEBHOOK_URL = "https://n8n.chilsmart.com/webhook-test/operfoods-contact";
+const INTRO_VIDEO_URL =
+  "https://firebasestorage.googleapis.com/v0/b/fast-trucks.firebasestorage.app/o/operfoods-intro.mp4?alt=media&token=d16e36e7-dd22-495c-8814-e8543b86368c";
 
 const aiProblems = [
   {
@@ -311,7 +313,13 @@ function ModeToggle({
   );
 }
 
-function AiLanding({ onCta }: { onCta: (source: string) => void }) {
+function AiLanding({
+  onCta,
+  onWatchVideo,
+}: {
+  onCta: (source: string) => void;
+  onWatchVideo: () => void;
+}) {
   const heroBadge = {
     text: "Próximamente: descubre nuevos eventos para tu foodtruck",
     tone: "text-primary bg-primary/10",
@@ -372,6 +380,14 @@ function AiLanding({ onCta }: { onCta: (source: string) => void }) {
               <span className="material-symbols-outlined">payments</span>
               Ver planes
             </a>
+            <button
+              type="button"
+              className="px-6 py-4 font-semibold text-sm bg-white border border-slate-200 text-slate-900 rounded-xl flex items-center gap-2 shadow-sm hover:border-primary hover:text-primary transition-all cursor-pointer"
+              onClick={onWatchVideo}
+            >
+              <span className="material-symbols-outlined text-base">play_circle</span>
+              Ver cómo funciona
+            </button>
             </div>
           <div className="flex items-center gap-2 text-sm font-semibold text-primary">
             <span className="material-symbols-outlined text-base">redeem</span>
@@ -803,7 +819,13 @@ function AiLanding({ onCta }: { onCta: (source: string) => void }) {
   );
 }
 
-function ClassicLanding({ onCta }: { onCta: (source: string) => void }) {
+function ClassicLanding({
+  onCta,
+  onWatchVideo,
+}: {
+  onCta: (source: string) => void;
+  onWatchVideo: () => void;
+}) {
   return (
     <>
       <section className="relative px-6 py-16 md:px-20 md:py-24">
@@ -838,6 +860,14 @@ function ClassicLanding({ onCta }: { onCta: (source: string) => void }) {
                 <span className="material-symbols-outlined">payments</span>
                 Ver planes
               </a>
+              <button
+                type="button"
+                className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-6 py-4 text-base font-semibold text-navy-deep hover:border-primary hover:text-primary transition-colors cursor-pointer"
+                onClick={onWatchVideo}
+              >
+                <span className="material-symbols-outlined text-base">play_circle</span>
+                Ver cómo funciona
+              </button>
             </div>
             <div className="flex flex-wrap gap-2 text-sm text-slate-700">
               <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary font-semibold">
@@ -1269,12 +1299,19 @@ function CTAModal({
   source: string | null;
 }) {
   const [status, setStatus] = useState<"idle" | "loading" | "ok" | "error">("idle");
-  const [form, setForm] = useState({ nombre: "", email: "", negocio: "", negocioNombre: "", telefono: "" });
+  const [form, setForm] = useState({
+    nombre: "",
+    email: "",
+    negocio: "",
+    negocioNombre: "",
+    telefono: "",
+    pass: "",
+  });
 
   useEffect(() => {
     if (open) {
       setStatus("idle");
-      setForm({ nombre: "", email: "", negocio: "", negocioNombre: "", telefono: "" });
+      setForm({ nombre: "", email: "", negocio: "", negocioNombre: "", telefono: "", pass: "" });
     }
   }, [open]);
 
@@ -1311,9 +1348,9 @@ function CTAModal({
           <span className="material-symbols-outlined">close</span>
         </button>
         <div className="mb-4">
-          <p className="text-xs font-bold uppercase tracking-widest text-primary">Agenda tu acceso</p>
-          <h3 className="text-2xl font-black text-navy-deep">Déjanos tus datos y te creamos credenciales</h3>
-          <p className="text-sm text-slate-600 mt-1">Solo pedimos lo esencial para activar tu cuenta.</p>
+          <p className="text-xs font-bold uppercase tracking-widest text-primary">Crea tu cuenta</p>
+          <h3 className="text-2xl font-black text-navy-deep">Déjanos tus datos y te creamos tu cuenta</h3>
+          <p className="text-sm text-slate-600 mt-1">Solo pedimos lo esencial para crear tu cuenta.</p>
         </div>
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div>
@@ -1353,6 +1390,18 @@ function CTAModal({
             />
           </div>
           <div>
+            <label className="mb-1 block text-sm font-semibold text-navy-deep">Contraseña</label>
+            <input
+              required
+              name="password"
+              value={form.pass}
+              onChange={(e) => setForm((f) => ({ ...f, pass: e.target.value }))}
+              className="w-full rounded-lg border border-slate-200 bg-slate-50 p-3 text-slate-900 focus:border-primary focus:ring-primary"
+              placeholder="Crea una contraseña segura"
+              type="pass"
+            />
+          </div>
+          <div>
             <label className="mb-1 block text-sm font-semibold text-navy-deep">Tipo de negocio</label>
             <select
               required
@@ -1385,7 +1434,7 @@ function CTAModal({
             disabled={status === "loading"}
             className="w-full rounded-xl bg-primary py-3 text-base font-black text-white shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all disabled:opacity-70 cursor-pointer"
           >
-            {status === "loading" ? "Enviando..." : "Crear mis credenciales"}
+            {status === "loading" ? "Enviando..." : "Crear mi cuenta"}
           </button>
           {status === "ok" && (
             <p className="text-center text-sm font-semibold text-green-600">¡Listo! Te contactaremos en minutos.</p>
@@ -1394,6 +1443,40 @@ function CTAModal({
             <p className="text-center text-sm font-semibold text-red-600">No se pudo enviar. Intenta de nuevo.</p>
           )}
         </form>
+      </div>
+    </div>
+  );
+}
+
+function VideoModal({ open, onClose }: { open: boolean; onClose: () => void }) {
+  if (!open) return null;
+  return (
+    <div
+      onClick={onClose}
+      className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/60 px-4"
+    >
+      <div
+        onClick={(event) => event.stopPropagation()}
+        className="relative w-full max-w-xl rounded-3xl bg-slate-900 shadow-2xl border border-white/10"
+      >
+        <button
+          type="button"
+          onClick={onClose}
+          className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-slate-900 hover:bg-white transition-colors"
+          aria-label="Cerrar video"
+        >
+          <span className="material-symbols-outlined text-xl leading-none">close</span>
+        </button>
+        <div className="flex justify-center p-6 bg-white">
+          <video
+            controls
+            autoPlay
+            className="max-h-[80vh] w-auto rounded-2xl object-contain shadow-2xl"
+            src={INTRO_VIDEO_URL}
+          >
+            Este navegador no soporta el reproductor de video.
+          </video>
+        </div>
       </div>
     </div>
   );
@@ -1519,9 +1602,12 @@ export default function Home() {
   const [mode, setMode] = useState<Mode>("ai");
   const aiEnabled = mode === "ai";
   const [ctaModal, setCtaModal] = useState<{ open: boolean; source: string | null }>({ open: false, source: null });
+  const [videoOpen, setVideoOpen] = useState(false);
 
   const openCta = (source: string) => setCtaModal({ open: true, source });
   const closeCta = () => setCtaModal({ open: false, source: null });
+  const openVideo = () => setVideoOpen(true);
+  const closeVideo = () => setVideoOpen(false);
 
   // Notificar visita a webhook (se ejecuta solo en cliente)
   useEffect(() => {
@@ -1604,9 +1690,16 @@ export default function Home() {
         </div>
       </header>
 
-      <main>{aiEnabled ? <AiLanding onCta={openCta} /> : <ClassicLanding onCta={openCta} />}</main>
+      <main>
+        {aiEnabled ? (
+          <AiLanding onCta={openCta} onWatchVideo={openVideo} />
+        ) : (
+          <ClassicLanding onCta={openCta} onWatchVideo={openVideo} />
+        )}
+      </main>
 
       <CTAModal open={ctaModal.open} source={ctaModal.source} onClose={closeCta} />
+      <VideoModal open={videoOpen} onClose={closeVideo} />
     </div>
   );
 }
