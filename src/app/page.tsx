@@ -8,7 +8,7 @@ type Mode = "ai" | "clasico";
 const WEBHOOK_URL = "https://n8n.chilsmart.com/webhook-test/TAIGA";
 const CTA_WEBHOOK_URL = "https://n8n.chilsmart.com/webhook/operfoods-contact";
 const INTRO_VIDEO_URL =
-  "https://firebasestorage.googleapis.com/v0/b/fast-trucks.firebasestorage.app/o/operfoods-intro.mp4?alt=media&token=d16e36e7-dd22-495c-8814-e8543b86368c";
+  "https://firebasestorage.googleapis.com/v0/b/fast-trucks.firebasestorage.app/o/WhatsApp%20Video%202026-03-18%20at%209.35.43%20AM.mp4?alt=media&token=64f1fcbb-807b-464b-8d80-e271f4675414";
 
 const aiProblems = [
   {
