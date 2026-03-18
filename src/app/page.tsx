@@ -1663,7 +1663,7 @@ export default function Home() {
           <div className="flex items-center gap-3">
             {/*<ModeToggle mode={mode} onChange={setMode} />*/}
             <a
-              className="hidden sm:block px-5 py-2.5 text-sm font-semibold text-navy-deep border border-primary/20 rounded-lg hover:bg-primary/5 transition-colors cursor-pointer"
+              className="px-4 py-2 text-xs sm:px-5 sm:py-2.5 sm:text-sm font-semibold text-navy-deep border border-primary/20 rounded-lg hover:bg-primary/5 transition-colors cursor-pointer"
               href="https://app.operfoods.com"
               target="_blank"
               rel="noopener noreferrer"
@@ -1671,7 +1671,7 @@ export default function Home() {
               Iniciar sesión
             </a>
             <button
-              className="px-6 py-2.5 text-sm font-bold bg-primary text-white rounded-lg shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
+              className="px-4 py-2 text-xs sm:px-6 sm:py-2.5 sm:text-sm font-bold bg-primary text-white rounded-lg shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
               type="button"
               onClick={() => openCta(aiEnabled ? "cta-header-demo" : "cta-header-acceso")}
             >
