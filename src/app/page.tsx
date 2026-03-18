@@ -103,16 +103,14 @@ const testimonials = [
     role: "Gerente, Gaby's Burgers",
     quote:
       '“Operfoods nos permitió ver que el evento más grande no siempre era el más rentable. Ahora elegimos mejor dónde estar.”',
-    avatar:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDB8zScc_zPs5dBvobHCX2Ib4Gc4yG-vGqpAycuYPKnjc6c-OvuCQtWAzzTmj8a9CFgozWsGysM9fl131eYhBgzBcffbFmbwEooH2Yp2A1l8LP0i4m4ykZN_qn9xLBpyPB_QmmC0fetqrNIPHEd7X7TdnGG4HB9wlMs9Xp_bXEhHCKANtx-n1RQGIwSVp_QoX80vYL8QvxMtrNyYfia62WRwu1DkRYo6rPBfBTpoyiT_Hr8h4qyiJdn7ZCzkd4IYZl2rRVtgnZ9_0gX",
+    initials: "GR",
   },
   {
     name: "Sebastian Villagrán",
     role: "Gerente, Pigzas pizzeria",
     quote:
       "“La gestión de inventario para eventos es otro nivel. Eliminamos el desperdicio en un 30% desde el primer mes.”",
-    avatar:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAhqrTQCN0FpVsfaEMjqfHt9n6JYYN_ShMFMnVz0H7vGS8Hu7yij0PJHVziEs3pvCvofuv0FybFS0iIr4s04jAsifmjFzq9O_7lbXnXr0X9rmZBil0jKxbhxbhU4U0u4RH98lgos4oiW35l4NLwrXgI1H4yRhek7LeLyC9LlwIHX2K2zzIVWgp6h-YIPvOdN1b5WrCKYCQn4IhhEyjoXFL-MHw_halYNzh7lqjcV3ELVXfz21xtIhyaOJiGSH5buc8j0kmx0u4CKVC7",
+    initials: "SV",
   },
   {
     name: "Marco Venegas",
@@ -121,8 +119,7 @@ const testimonials = [
       "“El módulo Reportes es increíble. Sus proyecciones nos ayudan a saber exactamente cuánto personal llevar a cada festival.”",
     quoteClassic:
       "“Incluso sin IA, los reportes en tiempo real nos permiten ajustar personal y stock en cada festival.”",
-    avatar:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDrCvHdJdvklGm4zDWQYWzRRlyUmnzNeNE6nUAwyB2BQt0iz71wESP4stquHy1SZOIgeUeo0qHJnAHVBL_ex3OE4QaUq1KK4MVGCBWU8uirlwjDVe3PdeJxPwN-3B2872TbjusRCGLUg_hrVx_3NyFUODPk8HwWFltzTFY8mCTN8k9AzOuaF9klC6drb2ZpShWGOtdgxVP6ykH1KtvSOibSt3x2TccC4zx0o-OisqhfRZQCag1a2Yz0F_KmDN2caZ_C9-mJmJDEk8Ai",
+    initials: "MV",
   },
 ];
 
@@ -680,14 +677,8 @@ function AiLanding({
                   </div>
                   <p className="text-slate-600 italic">{quote}</p>
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-slate-200 overflow-hidden">
-                      <Image
-                        alt={item.name}
-                        className="w-full h-full rounded-full object-cover"
-                        src={item.avatar}
-                        width={96}
-                        height={96}
-                      />
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-slate-200 font-bold text-navy-deep">
+                      {item.initials}
                     </div>
                     <div>
                       <h5 className="font-bold text-sm">{item.name}</h5>
