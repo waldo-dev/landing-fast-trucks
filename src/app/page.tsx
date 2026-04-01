@@ -12,88 +12,65 @@ const INTRO_VIDEO_URL =
 
 const aiProblems = [
   {
-    icon: "edit",
-    title: "Cuadernos y notas",
-    text: "Al cerrar el evento no sabes con certeza cuánto dinero ganaste realmente.",
+    icon: "menu_book",
+    title: "Menú difícil de mantener",
+    text: "Actualizar precios, agregar productos o subir fotos se vuelve una tarea lenta y propensa a errores.",
   },
   {
-    icon: "calculate",
-    title: "Cálculos mentales",
-    text: "Es fácil olvidar ventas, costos o mermas y terminar decidiendo a ciegas.",
+    icon: "link",
+    title: "Sin link para pedir",
+    text: "Tus clientes te escriben por WhatsApp o Instagram y se pierden pedidos entre mensajes.",
   },
   {
-    icon: "inventory_2",
-    title: "Inventario incierto",
-    text: "No sabes qué insumos se usaron ni si llevaste demasiado stock.",
+    icon: "hourglass_empty",
+    title: "Pedidos sin estado",
+    text: "No tienes un flujo claro: recibido → preparando → listo → entregado. Eso genera demoras y reclamos.",
   },
   {
-    icon: "report_problem",
-    title: "Eventos dudosos",
-    text: "No puedes saber rápido si el evento valió la pena o qué producto vender más.",
+    icon: "qr_code_2",
+    title: "Eventos sin trazabilidad",
+    text: "Vendes en ferias, pero luego no sabes qué se vendió ahí vs en local. Te quedas sin data para decidir.",
   },
 ];
 
 const aiSolutionFeatures = [
   {
-    icon: "bolt",
-    title: "Registrar ventas en segundos",
-    text: "Captura cada venta desde el celular y etiqueta el evento automáticamente.",
+    icon: "storefront",
+    title: "Crea tu negocio y tu usuario",
+    text: "En minutos tienes tu cuenta y tu negocio listo para empezar a vender en local o en eventos.",
   },
   {
-    icon: "inventory",
-    title: "Controlar inventario",
-    text: "Sabe exactamente qué insumos usaste y cuánto stock te queda.",
+    icon: "upload_file",
+    title: "Carga el menú fácil",
+    text: "Sube tu menú por CSV o PDF, o cárgalo manualmente. Incluye plantilla descargable para CSV.",
   },
   {
-    icon: "payments",
-    title: "Ver ganancias por evento",
-    text: "Muestra ingresos, costos y margen real sin hojas de cálculo.",
+    icon: "public",
+    title: "Publica tu menú y comparte un link",
+    text: "Obtienes un link para que tus clientes pidan directo desde tu menú online, con logo y colores de tu negocio.",
   },
   {
-    icon: "insights",
-    title: "Analizar eventos",
-    text: "Identifica qué eventos repetir y qué productos empujar para ganar más.",
-  },
-];
-
-const aiFeatures = [
-  {
-    icon: "star",
-    title: "Ranking de eventos",
-    text: "Identifica los eventos más rentables históricamente para priorizar tu agenda.",
-  },
-  {
-    icon: "insights",
-    title: "Proyecciones de ventas",
-    text: "Pronósticos basados en clima, ubicación y afluencia esperada de público.",
-  },
-  {
-    icon: "inventory",
-    title: "Recomendaciones de stock",
-    text: "Sugerencias inteligentes de carga de insumos para evitar quiebres o desperdicio.",
-  },
-  {
-    icon: "warning",
-    title: "Alertas de margen",
-    text: "Notificaciones en tiempo real si tus costos operativos superan el umbral de ganancia.",
+    icon: "checklist",
+    title: "Recibe pedidos y adminístralos",
+    text: "Ve pedidos entrantes, cambia estados, registra órdenes manuales y guarda tu historial de clientes.",
   },
 ];
 
 const aiSteps = [
   {
     number: "1",
-    title: "Registra",
-    text: "Crea tus productos y precios en segundos desde el celular.",
+    title: "Crea tu cuenta",
+    text: "Registra tu usuario y tu negocio (foodtruck o local de comida rápida).",
   },
   {
     number: "2",
-    title: "Asocia",
-    text: "Define el evento donde participarás antes de iniciar ventas.",
+    title: "Carga tu menú",
+    text: "Importa por CSV/PDF o cárgalo manualmente. Puedes descargar nuestra plantilla CSV.",
   },
   {
     number: "3",
-    title: "Obtén análisis",
-    text: "Visualiza el desempeño en tiempo real durante la jornada.",
+    title: "Publica y recibe pedidos",
+    text: "Publica tu menú, comparte tu link y gestiona pedidos y registro de clientes.",
   },
 ];
 
@@ -197,87 +174,49 @@ const classicRoadmap = [
 
 const faqItems = [
   {
-    question: "¿Cómo separo las ventas de eventos y local fijo?",
+    question: "¿Cómo cargo mi menú?",
     answer:
-      "Activa el evento antes de vender y todas las transacciones se etiquetan automáticamente. Luego ves ingresos, costos y margen por evento o por tu local fijo.",
+      "Puedes subir tu menú por CSV o PDF, o cargar productos manualmente. Si no tienes CSV, puedes descargar una plantilla y rellenarla en Excel/Google Sheets.",
   },
   {
-    question: "¿El POS imprime comandas y se integra con Transbank?",
+    question: "¿Cómo funciona el menú online y el link?",
     answer:
-      "Sí. Puedes imprimir comandas por Bluetooth para cocina/barra y conciliar pagos con Transbank para evitar descuadres de caja.",
+      "Cuando publicas tu menú, Operfoods te entrega un link único para compartir. Tus clientes ven tu menú online (con logo y colores del negocio) y pueden hacer pedidos directamente.",
   },
   {
-    question: "¿Cómo controlo inventario y recetas?",
+    question: "¿Puedo administrar el estado de los pedidos?",
     answer:
-      "Carga tus recetas y descontamos insumos por venta. Obtienes alertas de stock, costos por plato y valorización de inventario en planes avanzados.",
+      "Sí. Puedes ver pedidos entrantes y actualizar estados (por ejemplo: recibido, preparando, listo, entregado). También puedes registrar órdenes manualmente.",
   },
   {
-    question: "¿Puedo operar múltiples cajas y turnos en un mismo día?",
+    question: "¿Puedo editar mi menú después de publicarlo?",
     answer:
-      "Puedes abrir varias cajas y turnos simultáneos, con arqueos y movimientos separados. Ideal para ferias grandes o varios food trucks.",
+      "Sí. Puedes ver y modificar el menú en cualquier momento (precios, productos, disponibilidad) y los cambios se reflejan en el link compartido.",
   },
   {
-    question: "¿Qué reportes en tiempo real obtengo?",
+    question: "¿Cómo funcionan los eventos con QR?",
     answer:
-      "Dashboard con ventas por evento, margen estimado, medios de pago, ranking de productos y proyección simple para decidir personal y stock.",
+      "Puedes crear un evento y Operfoods genera un QR que dirige a tu menú. La diferencia es que los pedidos que llegan quedan asociados a ese evento para luego ver reportes ordenados.",
   },
   {
-    question: "¿Qué tan rápido puedo empezar?",
+    question: "¿Local y evento funcionan igual?",
     answer:
-      "En menos de un día: cargamos tu menú, precios y medios de pago. Incluye onboarding y acompañamiento inicial.",
+      "Sí. Operan igual; la diferencia es que en modo evento las órdenes (y tu data) quedan asociadas al evento hasta que lo terminas o vuelves a modo local.",
   },
 ];
 
-const pricingPlans = [
-  {
-    name: "Básico",
-    price: "$ 22.500 /mes",
-    tagline: "Incluye registro de ventas, inventario y análisis por evento.",
-    features: [
-      "Punto de venta rápido para ferias y local fijo",
-      "Arqueos y movimientos de caja en cada turno",
-      "Impresión de comandas (Bluetooth)",
-      "Descuentos y combos configurables",
-    ],
-  },
-  {
-    name: "Estándar",
-    price: "$ 32.500 /mes",
-    tagline: "Ideal para operar varios eventos y ver ganancias reales.",
-    features: [
-      "Punto de venta rápido para ferias y local fijo",
-      "Arqueos y movimientos de caja en cada turno",
-      "Impresión de comandas (Bluetooth)",
-      "Descuentos y combos configurables",
-      "Inventario básico por insumo y alertas de stock",
-      "Costeo de recetas y margen por producto",
-      "Gestión de clientes y proveedores",
-      "Reportes diarios y por evento con comparativas",
-    ],
-    highlight: true,
-  },
-  {
-    name: "Pro",
-    price: "$ 50.000 /mes",
-    tagline: "Control total con múltiples cajas, listas por canal y trazabilidad.",
-    features: [
-      "Punto de venta rápido para ferias y local fijo",
-      "Arqueos y movimientos de caja en cada turno",
-      "Impresión de comandas (Bluetooth)",
-      "Descuentos y combos configurables",
-      "Inventario básico por insumo y alertas de stock",
-      "Costeo de recetas y margen por producto",
-      "Gestión de clientes y proveedores",
-      "Reportes diarios y por evento con comparativas",
-      "Múltiples cajas y turnos simultáneos",
-      "Estado de resultados por evento y consolidado",
-      "Listas de precios por canal o evento",
-      "Inventario valorizado y trazabilidad",
-    ],
-  },
+const planFeatures = [
+  "Usuario + negocio (foodtruck o local)",
+  "Carga de menú por CSV, PDF o manual",
+  "Plantilla CSV descargable",
+  "Publicación de menú y link para compartir",
+  "Menú online personalizable (logo y colores)",
+  "Pedidos entrantes con estados",
+  "Registro de órdenes manuales",
+  "Clientes e historial",
+  "Eventos con QR y asociación de pedidos",
+  "Reportes ordenados por evento / local",
 ];
-
-const allPricingFeatures = Array.from(new Set(pricingPlans.flatMap((plan) => plan.features)));
 
 function ModeToggle({
   mode,
@@ -318,13 +257,13 @@ function AiLanding({
   onWatchVideo: () => void;
 }) {
   const heroBadge = {
-    text: "Próximamente: descubre nuevos eventos para tu foodtruck",
+    text: "Nuevo: menú online + pedidos + eventos con QR",
     tone: "text-primary bg-primary/10",
   };
 
   const stepFour = {
-    title: "Decide con IA",
-    text: "Usa los datos y la IA para planificar tu próxima inversión.",
+    title: "Activa eventos y obtén reportes",
+    text: "Crea eventos, usa QR y revisa la data por evento para decidir mejor.",
   };
 
   return (
@@ -342,24 +281,24 @@ function AiLanding({
               {heroBadge.text}
             </div>
             <h1 className="text-5xl md:text-6xl font-black leading-[1.1] tracking-tight text-slate-900">
-              ¿Sabes realmente <span className="text-primary">cuánto ganas</span> en cada evento?
+              Tu <span className="text-primary">menú online</span> listo para vender en local y eventos
             </h1>
             <p className="text-lg text-slate-600 leading-relaxed max-w-xl">
-              Muchos foodtrucks venden todo el día, pero al final no saben si el evento valió la pena. Operfoods te muestra
-              las ganancias reales por evento y te ayuda a decidir con datos.
+              Crea tu usuario y negocio, carga tu menú (CSV, PDF o manual), publícalo y recibe pedidos. Activa eventos y
+              usa un QR para asociar órdenes al evento y ver reportes claros.
             </p>
           <ul className="space-y-2 text-sm text-slate-700">
             <li className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-primary text-base">bolt</span>
-              Registrar ventas del evento en segundos
+              <span className="material-symbols-outlined text-primary text-base">public</span>
+              Publica tu menú y comparte un link para pedir
             </li>
             <li className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-primary text-base">inventory_2</span>
-              Controlar tu inventario sin excels
+              <span className="material-symbols-outlined text-primary text-base">checklist</span>
+              Gestiona pedidos por estado y registra órdenes manuales
             </li>
             <li className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-primary text-base">paid</span>
-              Ver exactamente cuánto ganaste
+              <span className="material-symbols-outlined text-primary text-base">qr_code_2</span>
+              Eventos con QR y reportes por evento
             </li>
           </ul>
           <div className="flex flex-wrap gap-4">
@@ -375,7 +314,7 @@ function AiLanding({
               href="#precios"
             >
               <span className="material-symbols-outlined">payments</span>
-              Ver planes
+              Ver precio
             </a>
             <button
               type="button"
@@ -396,16 +335,16 @@ function AiLanding({
           </div>
           <ul className="flex flex-wrap gap-3 text-sm text-slate-700">
             <li className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary font-semibold">
-              <span className="material-symbols-outlined text-base">event_available</span>
-              Ventas por evento
+              <span className="material-symbols-outlined text-base">public</span>
+              Menú online
             </li>
             <li className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary font-semibold">
-              <span className="material-symbols-outlined text-base">inventory_2</span>
-              Inventario y recetas
+              <span className="material-symbols-outlined text-base">checklist</span>
+              Gestión de pedidos
             </li>
             <li className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary font-semibold">
-              <span className="material-symbols-outlined text-base">insights</span>
-              Dash en tiempo real
+              <span className="material-symbols-outlined text-base">qr_code_2</span>
+              Eventos + QR
             </li>
           </ul>
           </div>
@@ -431,10 +370,10 @@ function AiLanding({
       <section className="py-24 bg-white border-y border-slate-100" id="problemas">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Muchos foodtrucks aún usan cuadernos y cálculos mentales</h2>
+            <h2 className="text-3xl font-bold text-slate-900 mb-4">Vender sin un sistema te hace perder pedidos (y control)</h2>
             <p className="text-slate-600 max-w-2xl mx-auto">
-              Después del evento es difícil saber cuánto ganaste, qué producto se vendió más o cuánto inventario se usó.
-              Operfoods te muestra los números reales de tu negocio.
+              Si tu menú no está publicado, los pedidos llegan por chat y los eventos no quedan registrados. Operfoods ordena tu operación
+              para vender mejor y obtener data usable.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -458,7 +397,7 @@ function AiLanding({
             <div className="order-2 lg:order-1 relative">
               <div className="bg-primary/5 rounded-3xl p-8 border border-primary/10">
                 <Image
-                  alt="Punto de venta móvil"
+                  alt="Menú online y pedidos"
                   className="rounded-xl shadow-lg border border-slate-200"
                   src="https://firebasestorage.googleapis.com/v0/b/fast-trucks.firebasestorage.app/o/food-truck.png?alt=media&token=ff65467d-fafa-4612-84fe-da45f57901c1"
                   width={1400}
@@ -469,8 +408,10 @@ function AiLanding({
             </div>
             <div className="order-1 lg:order-2 flex flex-col gap-10">
               <div>
-                <h2 className="text-3xl font-bold text-slate-900 mb-4">Operfoods te muestra cuánto ganas en cada evento</h2>
-                <p className="text-slate-600">Registra ventas, controla inventario y ve tu ganancia real sin hojas de cálculo.</p>
+                <h2 className="text-3xl font-bold text-slate-900 mb-4">Tu menú online, pedidos y eventos en un solo lugar</h2>
+                <p className="text-slate-600">
+                  Publica tu menú, comparte tu link y administra pedidos. En eventos, usa QR y obtén reportes ordenados por evento.
+                </p>
               </div>
               <div className="space-y-6">
                 {aiSolutionFeatures.map((item) => (
@@ -494,23 +435,23 @@ function AiLanding({
         <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
           <div className="space-y-6">
             <p className="text-sm font-bold uppercase tracking-[0.15em] text-primary">Beneficio económico</p>
-            <h2 className="text-3xl font-bold text-slate-900 leading-tight">Un foodtruck puede perder dinero sin notarlo</h2>
+            <h2 className="text-3xl font-bold text-slate-900 leading-tight">Vende más rápido y con menos fricción</h2>
             <p className="text-slate-600">
-              Llevar demasiado inventario, vender productos poco rentables o ir a eventos equivocados te come el margen. Operfoods te
-              ayuda a optimizar stock, identificar los mejores eventos y mejorar tus ganancias por jornada.
+              Un link de menú reduce el ida y vuelta por chat, ordena pedidos y te da data por local/evento. Operfoods te ayuda a operar
+              mejor y decidir con información real.
             </p>
             <ul className="space-y-3 text-sm text-slate-700">
               <li className="flex items-start gap-2">
                 <span className="material-symbols-outlined text-primary mt-[2px]">check_circle</span>
-                Optimiza inventario antes y durante el evento.
+                Menos pedidos perdidos y menos errores.
               </li>
               <li className="flex items-start gap-2">
                 <span className="material-symbols-outlined text-primary mt-[2px]">check_circle</span>
-                Identifica qué eventos repetir y cuáles evitar.
+                Flujo claro de estados para tu equipo.
               </li>
               <li className="flex items-start gap-2">
                 <span className="material-symbols-outlined text-primary mt-[2px]">check_circle</span>
-                Empuja productos más rentables con datos, no con intuición.
+                Reportes por evento para repetir lo que funciona.
               </li>
             </ul>
           </div>
@@ -527,19 +468,19 @@ function AiLanding({
             </div>
             <div className="space-y-3 text-sm text-slate-700">
               <div className="flex items-center justify-between p-3 rounded-lg bg-white border border-slate-100">
-                <span className="font-semibold text-slate-500">Ventas</span>
-                <span className="text-lg font-black text-slate-900">$480.000</span>
+                <span className="font-semibold text-slate-500">Órdenes</span>
+                <span className="text-lg font-black text-slate-900">128</span>
               </div>
               <div className="flex items-center justify-between p-3 rounded-lg bg-white border border-slate-100">
-                <span className="font-semibold text-slate-500">Costos</span>
-                <span className="text-lg font-black text-slate-900">$210.000</span>
+                <span className="font-semibold text-slate-500">Ticket promedio</span>
+                <span className="text-lg font-black text-slate-900">$3.750</span>
               </div>
               <div className="flex items-center justify-between p-3 rounded-lg bg-primary/10 border border-primary/30">
-                <span className="font-semibold text-primary">Ganancia real</span>
-                <span className="text-2xl font-black text-primary">$270.000</span>
+                <span className="font-semibold text-primary">Resumen del evento</span>
+                <span className="text-2xl font-black text-primary">$480.000</span>
               </div>
               <p className="text-xs text-slate-500">
-                Este cálculo es automático: se basa en ventas, costos y uso de inventario. No necesitas un Excel.
+                La idea es separar local vs eventos y tener reportes ordenados para decidir mejor.
               </p>
             </div>
           </div>
@@ -849,7 +790,7 @@ function ClassicLanding({
                 href="#precios"
               >
                 <span className="material-symbols-outlined">payments</span>
-                Ver planes
+                Ver precio
               </a>
               <button
                 type="button"
@@ -1194,60 +1135,105 @@ function ClassicLanding({
 }
 
 function PricingSection({ onCta }: { onCta: (source: string) => void }) {
+  const [billing, setBilling] = useState<"mensual" | "anual">("mensual");
+  const monthlyPrice = 30000;
+  const annualPrice = 300000;
+  const annualMonthlyEquivalent = Math.round(annualPrice / 12);
+
   return (
     <section className="px-6 py-24 md:px-20 bg-white" id="precios">
       <div className="mx-auto max-w-6xl">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-black text-navy-deep">Planes que crecen contigo</h2>
-          <p className="mt-3 text-slate-600">Elige el plan de Operfoods que mejor se adapta a tu operación.</p>
+          <h2 className="text-3xl md:text-4xl font-black text-navy-deep">Un solo plan, todas las funcionalidades</h2>
+          <p className="mt-3 text-slate-600">
+            Menú online, pedidos, clientes, eventos con QR y reportes. Sin complicaciones.
+          </p>
         </div>
-        <div className="grid gap-6 md:grid-cols-3">
-          {pricingPlans.map((plan) => (
-            <div
-              key={plan.name}
-              className={`rounded-2xl border bg-white p-8 shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl ${
-                plan.highlight ? "border-primary shadow-primary/20 ring-2 ring-primary/10 order-first md:order-none" : "border-slate-200"
+        <div className="flex items-center justify-center mb-10">
+          <div className="inline-flex items-center rounded-full border border-slate-200 bg-slate-50 p-1">
+            <button
+              type="button"
+              onClick={() => setBilling("mensual")}
+              className={`px-4 py-2 rounded-full text-sm font-bold transition-colors ${
+                billing === "mensual" ? "bg-white text-navy-deep shadow-sm" : "text-slate-600 hover:text-navy-deep"
               }`}
             >
-              <div className="flex items-center justify-between">
-                <h3 className="text-xl font-black text-navy-deep">{plan.name}</h3>
-                {plan.highlight && (
-                  <span className="text-xs font-bold uppercase tracking-wide text-primary bg-primary/10 px-3 py-1 rounded-full">
-                    Más elegido
-                  </span>
-                )}
+              Mensual
+            </button>
+            <button
+              type="button"
+              onClick={() => setBilling("anual")}
+              className={`px-4 py-2 rounded-full text-sm font-bold transition-colors ${
+                billing === "anual" ? "bg-white text-navy-deep shadow-sm" : "text-slate-600 hover:text-navy-deep"
+              }`}
+            >
+              Anual{" "}
+              <span className="ml-1 inline-flex items-center rounded-full bg-primary/10 px-2 py-0.5 text-[11px] font-black text-primary">
+                Ahorra
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <div className="mx-auto max-w-3xl rounded-3xl border border-primary/30 bg-white p-10 shadow-xl shadow-primary/10 ring-2 ring-primary/10">
+          <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-black uppercase tracking-wide text-primary">
+                <span className="material-symbols-outlined text-base">auto_awesome</span>
+                Plan Operfoods
               </div>
-              <p className="mt-2 text-3xl font-black text-navy-deep">{plan.price}</p>
-              <p className="mt-2 text-sm text-slate-600">{plan.tagline}</p>
-              <ul className="mt-6 space-y-3 text-sm">
-                {allPricingFeatures.map((feature) => {
-                  const included = plan.features.includes(feature);
-                  return (
-                    <li
-                      key={feature}
-                      className={`flex items-start gap-2 ${included ? "text-slate-700" : "text-slate-400 line-through"}`}
-                    >
-                      <span
-                        className={`material-symbols-outlined text-base mt-[2px] ${
-                          included ? "text-primary" : "text-slate-300"
-                        }`}
-                      >
-                        {included ? "check_circle" : "cancel"}
-                      </span>
-                      <span>{feature}</span>
-                    </li>
-                  );
-                })}
-              </ul>
-              <button
-                className="mt-8 w-full inline-flex justify-center rounded-xl border border-primary bg-primary text-white font-bold py-3 shadow-primary/20 shadow-lg hover:bg-primary/90 transition-colors cursor-pointer"
-                type="button"
-                onClick={() => onCta(`cta-pricing-${plan.name.toLowerCase().replace(/\s+/g, "-")}`)}
-              >
-                Probar 30 días gratis
-              </button>
+              <h3 className="mt-4 text-2xl md:text-3xl font-black text-navy-deep">Todo lo que necesitas para vender con tu menú online</h3>
+              <p className="mt-2 text-slate-600">
+                Ideal para foodtrucks y locales de comida rápida que quieren recibir pedidos, administrar eventos y ver reportes.
+              </p>
             </div>
-          ))}
+
+            <div className="shrink-0 rounded-2xl border border-slate-200 bg-slate-50 px-6 py-5 text-center">
+              <div className="text-xs font-bold uppercase text-slate-500">{billing === "mensual" ? "Precio mensual" : "Precio anual"}</div>
+              <div className="mt-1 text-4xl font-black text-navy-deep">
+                {billing === "mensual"
+                  ? `$ ${monthlyPrice.toLocaleString("es-CL")}`
+                  : `$ ${annualPrice.toLocaleString("es-CL")}`}
+              </div>
+              <div className="mt-1 text-sm font-semibold text-slate-600">
+                {billing === "mensual" ? "/ mes" : "/ año"}
+              </div>
+              {billing === "anual" && (
+                <div className="mt-2 text-xs text-slate-500">
+                  Equivale a <span className="font-bold text-navy-deep">$ {annualMonthlyEquivalent.toLocaleString("es-CL")}</span> / mes
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div className="mt-8 grid gap-3 md:grid-cols-2">
+            {planFeatures.map((feature) => (
+              <div key={feature} className="flex items-start gap-2 text-sm text-slate-700">
+                <span className="material-symbols-outlined text-primary text-base mt-[1px]">check_circle</span>
+                <span>{feature}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10 grid gap-3 md:grid-cols-2">
+            <button
+              className="w-full inline-flex justify-center rounded-xl bg-primary text-white font-black py-3.5 shadow-primary/20 shadow-lg hover:bg-primary/90 transition-colors cursor-pointer"
+              type="button"
+              onClick={() => onCta(`cta-pricing-${billing}`)}
+            >
+              Probar 30 días gratis
+            </button>
+            <a
+              className="w-full inline-flex justify-center rounded-xl border border-slate-200 bg-white text-navy-deep font-bold py-3.5 hover:bg-slate-50 transition-colors cursor-pointer"
+              href="#contacto"
+            >
+              Hablar con ventas
+            </a>
+          </div>
+
+          <div className="mt-4 text-center text-xs text-slate-500">
+            Puedes cambiar a plan anual cuando quieras.
+          </div>
         </div>
       </div>
     </section>
